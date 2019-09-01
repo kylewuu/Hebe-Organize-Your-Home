@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="lib/css/onsenui.css">
+  <link rel="stylesheet" href="lib/css/onsen-css-components.min.css">
+	<link rel="stylesheet" href="newCSS.css">
+
+  <script src="lib/js/onsenui.min.js"></script>
+</head>
+<body>
+
+	<ons-splitter>
+  <ons-splitter-side id="menu" side="left" width="220px" collapse swipeable>
+    <ons-page>
+      <ons-list>
+        <ons-list-item onclick="fn.load('home.html')" tappable>
+          Home
+        </ons-list-item>
+        <ons-list-item onclick="fn.load('list.html')" tappable>
+          Storage
+        </ons-list-item>
+        <ons-list-item onclick="fn.load('about.html')" tappable>
+          About and Help
+        </ons-list-item>
+      </ons-list>
+    </ons-page>
+  </ons-splitter-side>
+  <ons-splitter-content id="content" page="home.html"></ons-splitter-content>
+</ons-splitter>
+
+<template id="home.html">
+  <ons-page id="home">
+    <ons-toolbar>
+      <div class="left">
+        <ons-toolbar-button onclick="fn.open()">
+          <ons-icon icon="md-menu"></ons-icon>
+        </ons-toolbar-button>
+      </div>
+      <div class="center">
+        Command Center
+      </div>
+    </ons-toolbar>
+		<!-- actual content starts here -->
+		<div id="commandInputDIV" style="text-align: center; ">
+			<p>
+				<ons-input id="commandInput" modifier="underbar" placeholder="Type a command..." float></ons-input>
+			</p>
+			<p style="margin-top: 30px;" >
+				<ons-button id="submitButton" onclick="submit()">Submit</ons-button>
+			</p>
+		</div>
+  </ons-page>
+</template>
+
+<template id="list.html">
+  <ons-page id="listPage">
+    <ons-toolbar>
+      <div class="left">
+        <ons-toolbar-button onclick="fn.open()">
+          <ons-icon icon="md-menu"></ons-icon>
+        </ons-toolbar-button>
+      </div>
+
+
+
+      <div class="center">
+        List
+      </div>
+
+			<ons-button modifier="quiet" class="right" onclick="hideAll()">hide all</ons-button>
+
+    </ons-toolbar>
+
+		<!-- List starts here -->
+  <ons-list id="itemList">
+    <!-- <ons-list-header>Default</ons-list-header> -->
+    <ons-list-item>Something</ons-list-item>
+		<ons-list-item>went</ons-list-item>
+		<ons-list-item>wrong</ons-list-item>
+
+
+    <!-- <ons-list-header>Expandable</ons-list-header>
+
+    <ons-list-item expandable>
+      Tap to expand
+      <div class="expandable-content">Expandable content</div>
+    </ons-list-item>
+
+    <ons-list-header>Tappable / Ripple</ons-list-header>
+    <ons-list-item tappable>Tap me</ons-list-item>
+
+    <ons-list-header>Chevron</ons-list-header>
+    <ons-list-item modifier="chevron" tappable>Chevron</ons-list-item>
+
+
+
+    <ons-list-header>Switch</ons-list-header>
+    <ons-list-item>
+      <div class="center">
+        Turn it on
+      </div>
+      <div class="right">
+        <ons-switch></ons-switch>
+      </div>
+    </ons-list-item>
+
+    <ons-list-header>Switch and icon</ons-list-header>
+    <ons-list-item>
+      <div class="left">
+        <ons-icon icon="md-face" class="list-item__icon"></ons-icon>
+      </div>
+      <div class="center">
+        Icon and switch
+      </div>
+      <div class="right">
+        <ons-switch></ons-switch>
+      </div>
+    </ons-list-item>
+
+    <ons-list-header>No divider</ons-list-header>
+    <ons-list-item modifier="nodivider">Item A</ons-list-item>
+    <ons-list-item modifier="nodivider">Item B</ons-list-item>
+
+    <ons-list-header>Long divider</ons-list-header>
+    <ons-list-item modifier="longdivider">Item A</ons-list-item>
+    <ons-list-item modifier="longdivider">Item B</ons-list-item> -->
+  </ons-list>
+
+	<!-- List ends here -->
+
+  </ons-page>
+</template>
+
+<template id="about.html">
+  <ons-page>
+    <ons-toolbar>
+      <div class="left">
+        <ons-toolbar-button onclick="fn.open()">
+          <ons-icon icon="md-menu"></ons-icon>
+        </ons-toolbar-button>
+      </div>
+      <div class="center">
+        About
+      </div>
+    </ons-toolbar>
+  </ons-page>
+</template>
+</body>
+
+<script src="javascript.js"></script>
+<script src="storage.js"></script>
+
+</html>
