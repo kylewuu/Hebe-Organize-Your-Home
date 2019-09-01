@@ -1,0 +1,9 @@
+Next up:
+	Hide all button ==done
+	search for items -- just fix it up so that it comes up in the middle of the page as an element and not an popup
+	move items
+	undo button
+	voice
+	tutorial
+	settings?
+	
