@@ -58,6 +58,7 @@ var submit = function() {
 		}
 	}
 
+
 	if(moveCommandSuccess==true){
 		document.getElementById("results").innerHTML="";
 		var targetItem=command.slice(keywordMove.length,command.indexOf(keywordMove1));
@@ -65,6 +66,7 @@ var submit = function() {
 		var newLocation= command.slice(command.indexOf(keywordMove2)+keywordMove2.length,command.length);
 
 		if(globalItemArray.includes(targetItem)){
+
 			var targetItemIndex=globalItemArray.indexOf(targetItem);
 
 			if(globalLocationArray.includes(oldLocation)){
@@ -78,11 +80,16 @@ var submit = function() {
 					storeItem(combination);
 					document.getElementById('commandInput').value=""; //resets it back to clear
 				}
+				//if the item isn't stored in the place that you thought it was stored
 				else if(globalLocationArray.indexOf(oldLocation)!=targetItemIndex){
 					ons.notification.toast("it aint there", {animation: 'ascend', timeout:"1000"});
-
-
+					document.getElementById("results").innerHTML= "It looks like your "+targetItem+" is actually stored in "+globalLocationArray[targetItemIndex];
 				}
+			}
+			else{
+				ons.notification.toast("it aint there", {animation: 'ascend', timeout:"1000"});
+				document.getElementById("results").innerHTML= "It looks like your "+targetItem+" is actually stored in "+globalLocationArray[targetItemIndex]+
+				"<ons-button id='moveAnyway' onclick='' style='margin: 3%'>Move Anyway</ons-button>";
 
 			}
 		}
