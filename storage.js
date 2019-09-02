@@ -21,6 +21,7 @@ var groupIDArray=[];
 var idListTempArray=[];
 var globalItemArray=[];
 var globalLocationArray=[];
+var globalIDArray=[];
 
 var onError= function(tx,e){
 	alert("Something went wrong: " + e.Message)
@@ -115,6 +116,7 @@ var renderItems= function(tx, rs){
 	//updating the global variables
 	globalItemArray=itemListArray;
 	globalLocationArray=locationListArray;
+	globalIDArray=idListArray;
 
 	groupIDArray=headerIDArray;
 	idListTempArray=idListArray;

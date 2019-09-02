@@ -1,8 +1,9 @@
 Next up:
 	Hide all button ==done
-	search for items -- just fix it up so that it comes up in the middle of the page as an element and not an popup
-	move items
+	search for items == DONE just fix it up so that it comes up in the middle of the page as an element and not an popup
+	move items == move anyway, make a button that finds it somewhere else if you just got the location wrong
 	undo button
+	multilevel storage
 	voice
 	tutorial
 	settings?
