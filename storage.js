@@ -22,6 +22,7 @@ var idListTempArray=[];
 var globalItemArray=[];
 var globalLocationArray=[];
 var globalIDArray=[];
+var globalDateArray=[];
 
 var onError= function(tx,e){
 	alert("Something went wrong: " + e.Message)
@@ -55,6 +56,7 @@ var renderItems= function(tx, rs){
 	var inCollapseableFlag=false;
 	var headerIDArray= new Array(rs.rows.length);
 	var headerIDTemp="";
+	var dateListArray=new Array(rs.rows.length);
 
 	//for loop for storing it into an array
 	//-----
@@ -66,11 +68,13 @@ var renderItems= function(tx, rs){
 	sortedCombinedListArray=sortedCombinedListArray.sort();
 
 	for(var i=0;i<sortedCombinedListArray.length;i++){
-		itemListArray[i]=(sortedCombinedListArray[i].slice(sortedCombinedListArray[i].indexOf(";")+1,sortedCombinedListArray[i].indexOf("."))).trim();
+		itemListArray[i]=(sortedCombinedListArray[i].slice(sortedCombinedListArray[i].indexOf(";")+1,sortedCombinedListArray[i].indexOf(":"))).trim();
 		locationListArray[i]=(sortedCombinedListArray[i].slice(0,sortedCombinedListArray[i].indexOf(";"))).trim()
 		idListArray[i]= (sortedCombinedListArray[i].slice(sortedCombinedListArray[i].indexOf(".")+1,sortedCombinedListArray[i].length));
+		dateListArray[i]=(sortedCombinedListArray[i].slice(sortedCombinedListArray[i].indexOf(":")+1,sortedCombinedListArray[i].indexOf(".")))
 
 	}
+
 	// console.log(idListArray);
 
 	//----
@@ -117,6 +121,7 @@ var renderItems= function(tx, rs){
 	globalItemArray=itemListArray;
 	globalLocationArray=locationListArray;
 	globalIDArray=idListArray;
+	globalDateArray=dateListArray;
 
 	groupIDArray=headerIDArray;
 	idListTempArray=idListArray;

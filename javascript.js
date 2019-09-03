@@ -1,4 +1,14 @@
 //global variables
+var months=["Jan", "Feb", "Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
+//local storage initializations
+window.localStorage.setItem('firstTime', 'false');
+var test=function(){
+	var count=window.localStorage.getItem('count');
+	count+=1;
+	window.localStorage.setItem('count',count.toString());
+	document.getElementById("test").innerHTML= count.toString();
+}
+//
 
 var submit = function() {
   var command = document.getElementById('commandInput').value;
@@ -19,7 +29,7 @@ var submit = function() {
 
 	var keywordMove
 
-	var junkWordsFiltering=['i put my ', 'i put ','put my ','put ', 'store my ','i stored my ','store '];
+	var junkWordsFiltering=['i put my ', 'i put ','put my ','put ', 'store my ','i stored my ','store ','add '];
 	var keywordsStore= [' in ', ' to ', ' on ', ' beside ', ' with ', ' around ', ' on top ', ' in my ', ' on my ', ' beside my ', ' to my ',' with my ', ' around my ', ' on top my ', ' in the ', ' to the ',' on the ', ' beside the ', ' with the ', ' around the ', ' on top the ']//keywords that the comand looks for to store
 	var keywordsFind=['where is my ','where are my '];
 
@@ -83,6 +93,7 @@ var submit = function() {
 			toolBarBlink("rgba(73, 252, 142");
 			document.getElementById("results").innerHTML=" Woops! Looks like that item isn't stored yet... But I'll make a new item just for you";
 			ons.notification.toast('Stored', {animation: 'ascend', timeout:"1000"});
+
 			var combination=newLocation.trim()+";"+targetItem.trim();
 			storeItem(combination); //temporarily storing the command and not the processed item
 			document.getElementById('commandInput').value=""; //resets it back to clear
@@ -138,7 +149,8 @@ var submit = function() {
 			toolBarBlink("rgba(73, 252, 142");
 			ons.notification.toast('Stored', {animation: 'ascend', timeout:"1000"});
 			var location= command.slice(command.indexOf(keywordStore)+keywordStore.length,command.length);
-			var combination=location.trim()+";"+item.trim();
+			var date= new Date();
+			var combination=location.trim()+";"+item.trim()+":"+date.getFullYear()+"::"+date.getMonth()+":::"+date.getDate();
 			storeItem(combination); //temporarily storing the command and not the processed item
 			document.getElementById('commandInput').value=""; //resets it back to clear
 
@@ -187,8 +199,8 @@ var submit = function() {
 var displayResult=function(result,targetItem){
 	var resultSentencePart1BankArray=["Last time I heard, you put your ", "I clearly remember you putting your ","Hmmmm, prove me wrong, but I think your "]
 	var resultSentencePart2BankArray=[" is in your "];
-
-	document.getElementById("results").innerHTML=resultSentencePart1BankArray[Math.floor(Math.random()*(resultSentencePart1BankArray.length))]+targetItem+resultSentencePart2BankArray[Math.floor(Math.random()*(resultSentencePart2BankArray.length))]+result;
+	var dateString= globalDateArray[globalItemArray.indexOf(targetItem)];
+	document.getElementById("results").innerHTML=resultSentencePart1BankArray[Math.floor(Math.random()*(resultSentencePart1BankArray.length))]+targetItem+resultSentencePart2BankArray[Math.floor(Math.random()*(resultSentencePart2BankArray.length))]+result+" on "+months[dateString.slice(dateString.indexOf("::")+2,dateString.indexOf(":::"))-1]+" "+dateString.slice(dateString.indexOf(":::")+3,dateString.length)+", "+dateString.slice(0,dateString.indexOf("::"));
 }
 
 //side menu

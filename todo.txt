@@ -1,12 +1,12 @@
 Next up:
 	Hide all button ==done
 	search for items == DONE just fix it up so that it comes up in the middle of the page as an element and not an popup
-	move items == there's no need for a button, just tell them they're wrong and move it, can be undon using undo button
-	undo button
+	move items == DONE there's no need for a button, just tell them they're wrong and move it, can be undon using undo button
+	undo button --later?
 	voice
-	tutorial
-	settings?
+	tutorial == have the local storage done, just need to implement the first time login
+	settings? == local storage is done too
 	multilevel storage
 	run tests
-	add date logs
+	add date logs== done as well, just make it pretty
 	
