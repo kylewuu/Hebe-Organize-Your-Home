@@ -1,3 +1,5 @@
+//global variables
+
 var submit = function() {
   var command = document.getElementById('commandInput').value;
 	command= command.toLowerCase();
@@ -17,13 +19,13 @@ var submit = function() {
 
 	var keywordMove
 
-	var junkWordsFiltering=['i put my ', 'i put ','put '];
+	var junkWordsFiltering=['i put my ', 'i put ','put my ','put ', 'store my ','i stored my ','store '];
 	var keywordsStore= [' in ', ' to ', ' on ', ' beside ', ' with ', ' around ', ' on top ', ' in my ', ' on my ', ' beside my ', ' to my ',' with my ', ' around my ', ' on top my ', ' in the ', ' to the ',' on the ', ' beside the ', ' with the ', ' around the ', ' on top the ']//keywords that the comand looks for to store
-	var keywordsFind=['where is my '];
+	var keywordsFind=['where is my ','where are my '];
 
 	var keywordsMove=['move ','move my ','move the '];
-	var keywordsMove1=[' from ',' from my ', ' from the '];
-	var keywordsMove2=[' to ',' to my ',' to the '];
+	var keywordsMove1=[' to ',' to my ',' to the '];
+
 
 	for(var i=0; i<junkWordsFiltering.length;i++){
 		if(command.includes(junkWordsFiltering[i])){
@@ -44,14 +46,7 @@ var submit = function() {
 				keywordMoveTemp1=keywordsMove1[j];
 				if(command.includes(keywordMoveTemp1)){
 					keywordMove1=keywordMoveTemp1;
-
-					for(var k=0;k<keywordsMove2.length;k++){
-						keywordMoveTemp2=keywordsMove2[k];
-						if(command.includes(keywordMoveTemp2)){
-							moveCommandSuccess=true;
-							keywordMove2=keywordMoveTemp2;
-						}
-					}
+					moveCommandSuccess=true;
 
 				}
 			}
@@ -59,39 +54,38 @@ var submit = function() {
 	}
 
 
+
 	if(moveCommandSuccess==true){
 		document.getElementById("results").innerHTML="";
 		var targetItem=command.slice(keywordMove.length,command.indexOf(keywordMove1));
-		var oldLocation= command.slice(command.indexOf(keywordMove1)+keywordMove1.length,command.indexOf(keywordMove2));
-		var newLocation= command.slice(command.indexOf(keywordMove2)+keywordMove2.length,command.length);
+		var newLocation= command.slice(command.indexOf(keywordMove1)+keywordMove1.length,command.length);
 
 		if(globalItemArray.includes(targetItem)){
 
 			var targetItemIndex=globalItemArray.indexOf(targetItem);
+			var targetID=globalIDArray[targetItemIndex];
+			var oldLocation= globalLocationArray[targetItemIndex];
 
-			if(globalLocationArray.includes(oldLocation)){
-				var targetID=globalIDArray[targetItemIndex];
-
-				if(globalLocationArray.indexOf(oldLocation)==targetItemIndex){
-					ons.notification.toast("Move success!", {animation: 'ascend', timeout:"1000"});
-					// ons.notification.toast(targetItem+" "+oldLocation+" "+newLocation, {animation: 'ascend', timeout:"1000"});
-					deleteItem(targetID)
-					var combination=newLocation.trim()+";"+targetItem.trim();
-					storeItem(combination);
-					document.getElementById('commandInput').value=""; //resets it back to clear
-				}
-				//if the item isn't stored in the place that you thought it was stored
-				else if(globalLocationArray.indexOf(oldLocation)!=targetItemIndex){
-					ons.notification.toast("it aint there", {animation: 'ascend', timeout:"1000"});
-					document.getElementById("results").innerHTML= "It looks like your "+targetItem+" is actually stored in "+globalLocationArray[targetItemIndex];
-				}
+			if(oldLocation==newLocation){
+				ons.notification.toast("It's already in your "+newLocation+" but I guess I'll move it again just because you told me to...", {animation: 'ascend', timeout:"3000"});
 			}
 			else{
-				ons.notification.toast("it aint there", {animation: 'ascend', timeout:"1000"});
-				document.getElementById("results").innerHTML= "It looks like your "+targetItem+" is actually stored in "+globalLocationArray[targetItemIndex]+
-				"<ons-button id='moveAnyway' onclick='' style='margin: 3%'>Move Anyway</ons-button>";
-
+				toolBarBlink("rgba(73, 252, 142");
+				ons.notification.toast("Moved successfully to "+newLocation+" from "+oldLocation+"!", {animation: 'ascend', timeout:"2000"});
+				// ons.notification.toast(targetItem+" "+oldLocation+" "+newLocation, {animation: 'ascend', timeout:"1000"});
+				deleteItem(targetID)
+				var combination=newLocation.trim()+";"+targetItem.trim();
+				storeItem(combination);
+				document.getElementById('commandInput').value=""; //resets it back to clear
 			}
+		}
+		else{
+			toolBarBlink("rgba(73, 252, 142");
+			document.getElementById("results").innerHTML=" Woops! Looks like that item isn't stored yet... But I'll make a new item just for you";
+			ons.notification.toast('Stored', {animation: 'ascend', timeout:"1000"});
+			var combination=newLocation.trim()+";"+targetItem.trim();
+			storeItem(combination); //temporarily storing the command and not the processed item
+			document.getElementById('commandInput').value=""; //resets it back to clear
 		}
 	}
 
@@ -110,17 +104,38 @@ var submit = function() {
 
 		var item= command.slice(0,command.indexOf(keywordStore))
 		if(globalItemArray.includes(item)){
-			ons.notification.toast('Error!', {animation: 'ascend', timeout:"1000"});
-			if(item.length<1){
-				document.getElementById("results").innerHTML=item.charAt(0).toUpperCase()+' already exists! Maybe try a different name?'
+			// ons.notification.toast('Error!', {animation: 'ascend', timeout:"1000"});
+			// if(item.length<1){
+			// 	document.getElementById("results").innerHTML=item.charAt(0).toUpperCase()+' already exists! Maybe try a different name?'
+			//
+			// }
+			// else{
+			// 	// console.log(typeof(item.slice(1,item.length)))
+			// 	document.getElementById("results").innerHTML=item.charAt(0).toUpperCase()+item.slice(1,item.length)+' already exists! Maybe try a different name?'
+			// }
 
+			//changed it to just move the item
+			var targetItemIndex=globalItemArray.indexOf(item);
+			var targetID=globalIDArray[targetItemIndex];
+			var oldLocation= globalLocationArray[targetItemIndex];
+			var newLocation=command.slice(command.indexOf(keywordStore)+keywordStore.length,command.length);
+
+			if(oldLocation==newLocation){
+				ons.notification.toast("It's already in your "+newLocation+" but I guess I'll move it again just because you told me to...", {animation: 'ascend', timeout:"3000"});
 			}
 			else{
-				// console.log(typeof(item.slice(1,item.length)))
-				document.getElementById("results").innerHTML=item.charAt(0).toUpperCase()+item.slice(1,item.length)+' already exists! Maybe try a different name?'
+				toolBarBlink("rgba(73, 252, 142");
+				ons.notification.toast("Moved successfully to "+newLocation+" from "+oldLocation+"!", {animation: 'ascend', timeout:"2000"});
+				// ons.notification.toast(targetItem+" "+oldLocation+" "+newLocation, {animation: 'ascend', timeout:"1000"});
+				deleteItem(targetID)
+				var combination=newLocation.trim()+";"+item.trim();
+				storeItem(combination);
+				document.getElementById('commandInput').value=""; //resets it back to clear
 			}
+
 		}
 		else{
+			toolBarBlink("rgba(73, 252, 142");
 			ons.notification.toast('Stored', {animation: 'ascend', timeout:"1000"});
 			var location= command.slice(command.indexOf(keywordStore)+keywordStore.length,command.length);
 			var combination=location.trim()+";"+item.trim();
@@ -140,21 +155,38 @@ var submit = function() {
 			keywordFind=keywordFindTemp;
 		}
 	}
+
 	if(findCommandSuccess==true){
 		var targetItem=command.slice(keywordFind.length,command.length);
 		if(globalItemArray.includes(targetItem)){
+			toolBarBlink("rgba(73, 252, 142");
 			displayResult(globalLocationArray[globalItemArray.indexOf(targetItem)],targetItem)
 			ons.notification.toast("Found!", {animation: 'ascend', timeout:"1000"});
 			document.getElementById('commandInput').value=""; //resets it back to clear
 		}
+		else{
+			toolBarBlink("rgba(255, 0, 0");
+			document.getElementById("results").innerHTML="";
+			ons.notification.toast("No such item!", {animation: 'ascend', timeout:"1000"});
+		}
 
 	}
+
+	if(moveCommandSuccess==false && findCommandSuccess==false && storeCommandSuccess==false){
+		toolBarBlink("rgba(255, 0, 0");
+		document.getElementById("results").innerHTML="Error! You have not entered a correct command. Please try again or visit the 'help' page to find a quick tutorial on how to use our very intuitive app";
+		if(command=="fuck you"){ //incase anyone says anything bad to my command center >:(
+			ons.notification.toast("Hey be nice", {animation: 'ascend', timeout:"1000"});
+		}
+	}
+
+
 
 };
 
 var displayResult=function(result,targetItem){
 	var resultSentencePart1BankArray=["Last time I heard, you put your ", "I clearly remember you putting your ","Hmmmm, prove me wrong, but I think your "]
-	var resultSentencePart2BankArray=[" in your "];
+	var resultSentencePart2BankArray=[" is in your "];
 
 	document.getElementById("results").innerHTML=resultSentencePart1BankArray[Math.floor(Math.random()*(resultSentencePart1BankArray.length))]+targetItem+resultSentencePart2BankArray[Math.floor(Math.random()*(resultSentencePart2BankArray.length))]+result;
 }
@@ -184,4 +216,22 @@ var hideAll=function(){
 
 		}
 	}
+}
+
+// var moveAnyway=function(targetItem,newLocation,targetID){
+// 	deleteItem(targetID)
+// 	var combination=newLocation.trim()+";"+targetItem.trim();
+// 	storeItem(combination);
+// 	ons.notification.toast("Moved", {animation: 'ascend', timeout:"1000"});
+// }
+
+var toolBarBlink=function(color){
+	document.getElementById("homeToolBar").style.backgroundColor=color+", 0.5)";
+	setTimeout(function(){document.getElementById("homeToolBar").style.backgroundColor="white"	},150);
+	setTimeout(function(){document.getElementById("homeToolBar").style.backgroundColor=color+", 0.5)"	},300);
+	setTimeout(function(){document.getElementById("homeToolBar").style.backgroundColor="white"	},450);
+	setTimeout(function(){document.getElementById("homeToolBar").style.backgroundColor=color+", 0.5)"	},600);
+	setTimeout(function(){document.getElementById("homeToolBar").style.backgroundColor="white"	},750);
+	// setTimeout(function(){document.getElementById("homeToolBar").style.backgroundColor=color+", 0.5)"	},900);
+	// setTimeout(function(){document.getElementById("homeToolBar").style.backgroundColor="white"	},1050);
 }
