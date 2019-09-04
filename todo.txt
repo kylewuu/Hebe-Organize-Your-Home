@@ -2,11 +2,16 @@ Next up:
 	Hide all button ==done
 	search for items == DONE just fix it up so that it comes up in the middle of the page as an element and not an popup
 	move items == DONE there's no need for a button, just tell them they're wrong and move it, can be undon using undo button
-	undo button --later?
-	voice
 	tutorial == have the local storage done, just need to implement the first time login
-	settings? == local storage is done too
-	multilevel storage
-	run tests
+	settings? == reminders, 
 	add date logs== done as well, just make it pretty
+	add in reminders== for a year
 	
+Tutorial:
+Hey welcome to the storage app. Now I know that you obviously wont use this for little things, but maybe
+
+Later on:
+run tests
+multilevel storage ==probably coming next release 
+undo button --later?
+voice
