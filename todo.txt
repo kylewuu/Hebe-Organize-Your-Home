@@ -5,7 +5,8 @@ Next up:
 	tutorial == have the local storage done, just need to implement the first time login
 	settings? == reminders, 
 	add date logs== done as well, just make it pretty
-	add in reminders== for a year
+	add in reminders== need to tally up the stored dates, and then find the difference then push a reminder if need be
+	make a cool looking avatar
 	
 Tutorial:
 Hey welcome to the storage app. Now I know that you obviously wont use this for little things, but maybe

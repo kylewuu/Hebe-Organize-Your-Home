@@ -1,5 +1,8 @@
+
 //global variables
 var months=["Jan", "Feb", "Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
+
+
 //local storage initializations
 window.localStorage.setItem('firstTime', 'false');
 var test=function(){
@@ -200,7 +203,7 @@ var displayResult=function(result,targetItem){
 	var resultSentencePart1BankArray=["Last time I heard, you put your ", "I clearly remember you putting your ","Hmmmm, prove me wrong, but I think your "]
 	var resultSentencePart2BankArray=[" is in your "];
 	var dateString= globalDateArray[globalItemArray.indexOf(targetItem)];
-	document.getElementById("results").innerHTML=resultSentencePart1BankArray[Math.floor(Math.random()*(resultSentencePart1BankArray.length))]+targetItem+resultSentencePart2BankArray[Math.floor(Math.random()*(resultSentencePart2BankArray.length))]+result+" on "+months[dateString.slice(dateString.indexOf("::")+2,dateString.indexOf(":::"))-1]+" "+dateString.slice(dateString.indexOf(":::")+3,dateString.length)+", "+dateString.slice(0,dateString.indexOf("::"));
+	document.getElementById("results").innerHTML=resultSentencePart1BankArray[Math.floor(Math.random()*(resultSentencePart1BankArray.length))]+targetItem+resultSentencePart2BankArray[Math.floor(Math.random()*(resultSentencePart2BankArray.length))]+result+" on "+months[dateString.slice(dateString.indexOf("::")+2,dateString.indexOf(":::"))]+" "+dateString.slice(dateString.indexOf(":::")+3,dateString.length)+", "+dateString.slice(0,dateString.indexOf("::"));
 }
 
 //side menu

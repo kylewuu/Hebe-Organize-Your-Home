@@ -23,6 +23,8 @@ var globalItemArray=[];
 var globalLocationArray=[];
 var globalIDArray=[];
 var globalDateArray=[];
+var remindersArray=[];
+var bootUpFlag=false;
 
 var onError= function(tx,e){
 	alert("Something went wrong: " + e.Message)
@@ -140,6 +142,11 @@ var renderItems= function(tx, rs){
 
 	}
 
+	if(bootUpFlag==false){ //this is to increase speed and not have the app do reminders every single time it runs
+		getReminders();
+		bootUpFlag=true;
+	}
+
 
 }
 
@@ -166,6 +173,17 @@ var deleteItem= function(id){
 		tx.executeSql("DELETE FROM items WHERE ID=?", [id], onSuccess, onError);
 	})
 
+}
+
+var getReminders=function(){
+	for(var i=0;i<globalDateArray.length;i++){
+		var date= new Date();
+		var currentDate=date.getFullYear()+"::"+date.getMonth()+":::"+date.getDate();
+		console.log(currentDate)
+		currentDate=parseInt(currentDate.slice(currentDate.indexOf("::")+2,currentDate.indexOf(":::")))+parseInt(currentDate.slice(0,currentDate.indexOf("::")))*12;
+		console.log(currentDate)
+		// var dateTemp=globalDateArray
+	}
 }
 
 openDb(); //opens it so that the page actually loads
