@@ -1,18 +1,41 @@
+var settingsPageOn=false;
+var homePageOn=false;
+
 document.addEventListener('init', function(event){
 	if(event.target.id== "listPage" ){
 		openDb();
 		getItems();
+
+	}
+	else if(event.target.id=="settingsPage"){
+		homePageOn=false;
+		settingsPageOn=true;
+		setReminderTimeSubtitle();
+
+	}
+	else if(event.target.id=="home"){
+		homePageYes=true;
+		settingsPageOn=false;
+		getReminders();
+
 	}
 });
 
-//enter key
-//FIX THIS-------------
+//for pressing the enter keys
 window.addEventListener("keypress", keyPress, false);
 function keyPress(key) {
-	if (key.key == "Enter"){
+	if (key.key == "Enter" && document.getElementById("submitButton")!=null){
 		document.getElementById("submitButton").click();
+
 	}
+
+	else if (key.key == "Enter" && document.getElementById("setReminderButton")!=null){
+		document.getElementById("setReminderButton").click();
+
+	}
+
 }
+
 
 
 var db=null;
@@ -77,29 +100,13 @@ var renderItems= function(tx, rs){
 
 	}
 
-	// console.log(idListArray);
-
-	//----
-	// for(var i=0;i<rs.rows.length;i++){
-	// 	var row=rs.rows.item(i);
-	// 	itemListArray[i]=(row.item.slice(row.item.indexOf(";")+1,row.item.length)).trim();
-	// 	locationListArray[i]=(0,row.item.indexOf(";")-1)
-	// }
-
-	//--------OLD ONE and is not collapseable
-	// for(var i=0;i<itemListArray.length;i++){
-	// 	output += "<ons-list-item>" + itemListArray[i]+": "+locationListArray[i] + "<div class='right'> <ons-button onclick='deleteItem("+row.ID+")'><ons-icon icon= 'trash'></ons-icon></ons-button></div>"+ "</ons-list-item>";
-	// }
-
-	//NEW LIST WHERE IT'S collapseable
-	//initializes the first item
 	output+= "<ons-list-item expandable id="+"ID"+0+">" + locationListArray[0]+ "<div class='expandable-content'>"+"<ons-list-item>" +itemListArray[0] +"<div class='right' style='float: right'> <ons-button onclick='deleteItem("+idListArray[0]+")'><ons-icon icon= 'trash'></ons-icon></ons-button></div></ons-list-item>";
 	inCollapseableFlag=true;
 	headerIDArray[0]=0;
 	headerIDTemp=0;
 
 	for(var i=1;i<itemListArray.length;i++){
-		// console.log("before: ", output);
+
 		if(inCollapseableFlag==true && locationListArray[i]==locationListArray[i-1]){
 			output += "<ons-list-item>"+itemListArray[i] +"<div  class='right'> <ons-button onclick='deleteItem("+idListArray[i]+")'><ons-icon icon= 'trash'></ons-icon></ons-button></div></ons-list-item>";
 		}
@@ -115,7 +122,7 @@ var renderItems= function(tx, rs){
 				output+="</ons-list-item>"
 			}
 		}
-		// console.log("after: ", output);
+
 		headerIDArray[i]=headerIDTemp;
 	}
 
@@ -176,13 +183,21 @@ var deleteItem= function(id){
 }
 
 var getReminders=function(){
+	// console.log(globalDateArray)
+	document.getElementById("results").innerHTML="";
 	for(var i=0;i<globalDateArray.length;i++){
 		var date= new Date();
 		var currentDate=date.getFullYear()+"::"+date.getMonth()+":::"+date.getDate();
-		console.log(currentDate)
+		// console.log(currentDate)
 		currentDate=parseInt(currentDate.slice(currentDate.indexOf("::")+2,currentDate.indexOf(":::")))+parseInt(currentDate.slice(0,currentDate.indexOf("::")))*12;
-		console.log(currentDate)
-		// var dateTemp=globalDateArray
+		// console.log(currentDate)
+		var dateTemp=globalDateArray[i];
+		dateTemp=parseInt(dateTemp.slice(dateTemp.indexOf("::")+2,dateTemp.indexOf(":::")))+parseInt(dateTemp.slice(0,dateTemp.indexOf("::")))*12;
+
+		//reminder time setting
+		if((currentDate-dateTemp)==parseInt(window.localStorage.getItem('reminderTime'))){
+			document.getElementById("results").innerHTML+="</br></br> It's been "+ parseInt(window.localStorage.getItem('reminderTime'))+" months since you've stored: "+globalItemArray[i]
+		}
 	}
 }
 

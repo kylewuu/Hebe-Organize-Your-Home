@@ -3,14 +3,22 @@
 var months=["Jan", "Feb", "Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
 
 
-//local storage initializations
-window.localStorage.setItem('firstTime', 'false');
-var test=function(){
-	var count=window.localStorage.getItem('count');
-	count+=1;
-	window.localStorage.setItem('count',count.toString());
-	document.getElementById("test").innerHTML= count.toString();
+// local storage initializations
+if(window.localStorage.getItem('firstTime')==null || window.localStorage.getItem('firstTime')==true){
+	window.localStorage.setItem('firstTime', 'false');
+	// runTutorial();
 }
+
+if(window.localStorage.getItem('reminderTime')==null){
+	window.localStorage.setItem('reminderTime', '12');
+}
+
+// var test=function(){
+// 	var count=window.localStorage.getItem('count');
+// 	count+=1;
+// 	window.localStorage.setItem('count',count.toString());
+// 	document.getElementById("test").innerHTML= count.toString();
+// }
 //
 
 var submit = function() {
@@ -32,12 +40,12 @@ var submit = function() {
 
 	var keywordMove
 
-	var junkWordsFiltering=['i put my ', 'i put ','put my ','put ', 'store my ','i stored my ','store ','add '];
-	var keywordsStore= [' in ', ' to ', ' on ', ' beside ', ' with ', ' around ', ' on top ', ' in my ', ' on my ', ' beside my ', ' to my ',' with my ', ' around my ', ' on top my ', ' in the ', ' to the ',' on the ', ' beside the ', ' with the ', ' around the ', ' on top the ']//keywords that the comand looks for to store
+	var junkWordsFiltering=['i put my ', 'i put ','put my ','put ', 'store my ','i stored my ','store ','add ','insert my ','insert ','place my ','place '];
+	var keywordsStore= [' in ', ' into ',' to ', ' on ', ' beside ', ' with ', ' around ', ' on top ', ' in my ', ' on my ', ' beside my ', ' to my ',' with my ', ' around my ', ' on top my ', ' in the ', ' to the ',' on the ', ' beside the ', ' with the ', ' around the ', ' on top the ']//keywords that the comand looks for to store
 	var keywordsFind=['where is my ','where are my '];
 
-	var keywordsMove=['move ','move my ','move the '];
-	var keywordsMove1=[' to ',' to my ',' to the '];
+	var keywordsMove=['move ','move my ','move the ','moved ','moved the ','moved my '];
+	var keywordsMove1=[' to ',' to my ',' to the ',' into ',' into the ',' into my '];
 
 
 	for(var i=0; i<junkWordsFiltering.length;i++){
@@ -66,8 +74,6 @@ var submit = function() {
 		}
 	}
 
-
-
 	if(moveCommandSuccess==true){
 		document.getElementById("results").innerHTML="";
 		var targetItem=command.slice(keywordMove.length,command.indexOf(keywordMove1));
@@ -87,7 +93,8 @@ var submit = function() {
 				ons.notification.toast("Moved successfully to "+newLocation+" from "+oldLocation+"!", {animation: 'ascend', timeout:"2000"});
 				// ons.notification.toast(targetItem+" "+oldLocation+" "+newLocation, {animation: 'ascend', timeout:"1000"});
 				deleteItem(targetID)
-				var combination=newLocation.trim()+";"+targetItem.trim();
+				var date= new Date();
+				var combination=newLocation.trim()+";"+targetItem.trim()+":"+date.getFullYear()+"::"+date.getMonth()+":::"+date.getDate();
 				storeItem(combination);
 				document.getElementById('commandInput').value=""; //resets it back to clear
 			}
@@ -96,8 +103,8 @@ var submit = function() {
 			toolBarBlink("rgba(73, 252, 142");
 			document.getElementById("results").innerHTML=" Woops! Looks like that item isn't stored yet... But I'll make a new item just for you";
 			ons.notification.toast('Stored', {animation: 'ascend', timeout:"1000"});
-
-			var combination=newLocation.trim()+";"+targetItem.trim();
+			var date= new Date();
+			var combination=newLocation.trim()+";"+targetItem.trim()+":"+date.getFullYear()+"::"+date.getMonth()+":::"+date.getDate();
 			storeItem(combination); //temporarily storing the command and not the processed item
 			document.getElementById('commandInput').value=""; //resets it back to clear
 		}
@@ -105,12 +112,15 @@ var submit = function() {
 
 	//storing only--------------
 	//tesitng to see if the command contains those keywords
-	for(var i=0;i<keywordsStore.length;i++){
-		keywordStoreTemp=keywordsStore[i];
-		if(command.includes(keywordStoreTemp)){
-			storeCommandSuccess= true;
-			keywordStore=keywordStoreTemp;
+	if(moveCommandSuccess==false){
+		for(var i=0;i<keywordsStore.length;i++){
+			keywordStoreTemp=keywordsStore[i];
+			if(command.includes(keywordStoreTemp)){
+				storeCommandSuccess= true;
+				keywordStore=keywordStoreTemp;
+			}
 		}
+
 	}
 
 	if(storeCommandSuccess==true && moveCommandSuccess==false){
@@ -118,15 +128,6 @@ var submit = function() {
 
 		var item= command.slice(0,command.indexOf(keywordStore))
 		if(globalItemArray.includes(item)){
-			// ons.notification.toast('Error!', {animation: 'ascend', timeout:"1000"});
-			// if(item.length<1){
-			// 	document.getElementById("results").innerHTML=item.charAt(0).toUpperCase()+' already exists! Maybe try a different name?'
-			//
-			// }
-			// else{
-			// 	// console.log(typeof(item.slice(1,item.length)))
-			// 	document.getElementById("results").innerHTML=item.charAt(0).toUpperCase()+item.slice(1,item.length)+' already exists! Maybe try a different name?'
-			// }
 
 			//changed it to just move the item
 			var targetItemIndex=globalItemArray.indexOf(item);
@@ -159,19 +160,20 @@ var submit = function() {
 
 		}
 	}
-	// else if( storeCommandSuccess== false && command!=""){
-	// 	ons.notification.toast("Invalid command", {animation: 'ascend', timeout:"1000"})
-	// }
+
 	//finding only---------------------------
-	for(var i=0;i<keywordsFind.length;i++){
-		keywordFindTemp=keywordsFind[i];
-		if(command.includes(keywordFindTemp)){
-			findCommandSuccess= true;
-			keywordFind=keywordFindTemp;
+	if(moveCommandSuccess== false && storeCommandSuccess==false){
+		for(var i=0;i<keywordsFind.length;i++){
+			keywordFindTemp=keywordsFind[i];
+			if(command.includes(keywordFindTemp)){
+				findCommandSuccess= true;
+				keywordFind=keywordFindTemp;
+			}
 		}
+
 	}
 
-	if(findCommandSuccess==true){
+	if(findCommandSuccess==true && moveCommandSuccess== false && storeCommandSuccess==false){
 		var targetItem=command.slice(keywordFind.length,command.length);
 		if(globalItemArray.includes(targetItem)){
 			toolBarBlink("rgba(73, 252, 142");
@@ -189,14 +191,12 @@ var submit = function() {
 
 	if(moveCommandSuccess==false && findCommandSuccess==false && storeCommandSuccess==false){
 		toolBarBlink("rgba(255, 0, 0");
+
 		document.getElementById("results").innerHTML="Error! You have not entered a correct command. Please try again or visit the 'help' page to find a quick tutorial on how to use our very intuitive app";
 		if(command=="fuck you"){ //incase anyone says anything bad to my command center >:(
 			ons.notification.toast("Hey be nice", {animation: 'ascend', timeout:"1000"});
 		}
 	}
-
-
-
 };
 
 var displayResult=function(result,targetItem){
@@ -233,13 +233,6 @@ var hideAll=function(){
 	}
 }
 
-// var moveAnyway=function(targetItem,newLocation,targetID){
-// 	deleteItem(targetID)
-// 	var combination=newLocation.trim()+";"+targetItem.trim();
-// 	storeItem(combination);
-// 	ons.notification.toast("Moved", {animation: 'ascend', timeout:"1000"});
-// }
-
 var toolBarBlink=function(color){
 	document.getElementById("homeToolBar").style.backgroundColor=color+", 0.5)";
 	setTimeout(function(){document.getElementById("homeToolBar").style.backgroundColor="white"	},150);
@@ -249,4 +242,28 @@ var toolBarBlink=function(color){
 	setTimeout(function(){document.getElementById("homeToolBar").style.backgroundColor="white"	},750);
 	// setTimeout(function(){document.getElementById("homeToolBar").style.backgroundColor=color+", 0.5)"	},900);
 	// setTimeout(function(){document.getElementById("homeToolBar").style.backgroundColor="white"	},1050);
+}
+
+//working on it rn
+var runTutorial=function(){
+
+};
+
+var setReminderTime=function(){
+	var reminderTime=parseInt(document.getElementById('reminderTimeInput').value);
+	if(isNaN(reminderTime)==false){
+		window.localStorage.setItem('reminderTime', reminderTime.toString());
+	}
+	setReminderTimeSubtitle();
+	document.getElementById('reminderTimeInput').value="";
+
+};
+var setReminderTimeSubtitle=function(){
+	if(isNaN(window.localStorage.getItem('reminderTime'))==false){
+		document.getElementById('reminderTimeSubtitle').innerHTML="It's currently set to: "+window.localStorage.getItem('reminderTime')+" months"
+	}
+	else{
+		document.getElementById('reminderTimeSubtitle').innerHTML="It's currently set to: 12 months"
+	}
+
 }

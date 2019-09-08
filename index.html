@@ -1,159 +1,134 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <link rel="stylesheet" href="lib/css/onsenui.css">
   <link rel="stylesheet" href="lib/css/onsen-css-components.min.css">
-	<link rel="stylesheet" href="newCSS.css">
+  <link rel="stylesheet" href="newCSS.css">
 
   <script src="lib/js/onsenui.min.js"></script>
 </head>
+
 <body>
 
-	<ons-splitter>
-  <ons-splitter-side id="menu" side="left" width="220px" collapse swipeable>
-    <ons-page>
-      <ons-list>
-        <ons-list-item onclick="fn.load('home.html')" tappable>
-          Home
-        </ons-list-item>
-        <ons-list-item onclick="fn.load('list.html')" tappable>
-          Storage
-        </ons-list-item>
-        <ons-list-item onclick="fn.load('about.html')" tappable>
-          About and Help
-        </ons-list-item>
-      </ons-list>
+  <ons-splitter>
+    <ons-splitter-side id="menu" side="left" width="220px" collapse swipeable>
+      <ons-page>
+        <ons-list>
+          <ons-list-item onclick="fn.load('home.html')" tappable>
+            Home
+          </ons-list-item>
+          <ons-list-item onclick="fn.load('list.html')" tappable>
+            Storage
+          </ons-list-item>
+          <ons-list-item onclick="fn.load('about.html')" tappable>
+            Settings and Help
+          </ons-list-item>
+        </ons-list>
+      </ons-page>
+    </ons-splitter-side>
+    <ons-splitter-content id="content" page="home.html"></ons-splitter-content>
+  </ons-splitter>
+
+  <template id="home.html">
+    <ons-page id="home">
+      <ons-toolbar id="homeToolBar">
+        <div class="left">
+          <ons-toolbar-button onclick="fn.open()">
+            <ons-icon icon="md-menu"></ons-icon>
+          </ons-toolbar-button>
+        </div>
+        <div class="center">
+          Command Center
+        </div>
+      </ons-toolbar>
+      <!-- actual content starts here -->
+      <div id="commandInputDIV" style="text-align: center; ">
+        <p>
+          <ons-input id="commandInput" modifier="underbar" placeholder="Type a command..." float></ons-input>
+        </p>
+        <p style="margin-top: 30px;">
+          <ons-button id="submitButton" onclick="submit()">Submit</ons-button>
+        </p>
+        <!-- <ons-button id="testButton" onclick="test()">test</ons-button>
+        <div id="test"> -->
+
+        </div>
+      </div>
+
+      <div id="resultDiv" class="center">
+        <p id="results" style="text-align: center">
+        </p>
+      </div>
     </ons-page>
-  </ons-splitter-side>
-  <ons-splitter-content id="content" page="home.html"></ons-splitter-content>
-</ons-splitter>
+  </template>
 
-<template id="home.html">
-  <ons-page id="home">
-    <ons-toolbar id="homeToolBar">
-      <div class="left">
-        <ons-toolbar-button onclick="fn.open()">
-          <ons-icon icon="md-menu"></ons-icon>
-        </ons-toolbar-button>
-      </div>
-      <div class="center">
-        Command Center
-      </div>
-    </ons-toolbar>
-		<!-- actual content starts here -->
-		<div id="commandInputDIV" style="text-align: center; ">
-			<p>
-				<ons-input id="commandInput" modifier="underbar" placeholder="Type a command..." float></ons-input>
-			</p>
-			<p style="margin-top: 30px;" >
-				<ons-button id="submitButton" onclick="submit()">Submit</ons-button>
-			</p>
-			<ons-button id="testButton" onclick="test()">test</ons-button>
-			<div id="test">
-				
-			</div>
-		</div>
-
-		<div id="resultDiv" class="center">
-			<p id="results" style="text-align: center">
-			</p>
-		</div>
-  </ons-page>
-</template>
-
-<template id="list.html">
-  <ons-page id="listPage">
-    <ons-toolbar>
-      <div class="left">
-        <ons-toolbar-button onclick="fn.open()">
-          <ons-icon icon="md-menu"></ons-icon>
-        </ons-toolbar-button>
-      </div>
+  <template id="list.html">
+    <ons-page id="listPage">
+      <ons-toolbar>
+        <div class="left">
+          <ons-toolbar-button onclick="fn.open()">
+            <ons-icon icon="md-menu"></ons-icon>
+          </ons-toolbar-button>
+        </div>
 
 
 
-      <div class="center">
-        List
-      </div>
+        <div class="center">
+          List
+        </div>
 
-			<ons-button modifier="quiet" class="right" onclick="hideAll()">hide all</ons-button>
+        <ons-button modifier="quiet" class="right" onclick="hideAll()">hide all</ons-button>
 
-    </ons-toolbar>
+      </ons-toolbar>
 
-		<!-- List starts here -->
-  <ons-list id="itemList">
-    <!-- <ons-list-header>Default</ons-list-header> -->
-    <ons-list-item>Something</ons-list-item>
-		<ons-list-item>went</ons-list-item>
-		<ons-list-item>wrong</ons-list-item>
+      <!-- List starts here -->
+      <ons-list id="itemList">
+        <!-- <ons-list-header>Default</ons-list-header> -->
+        <ons-list-item>Something</ons-list-item>
+        <ons-list-item>went</ons-list-item>
+        <ons-list-item>wrong</ons-list-item>
 
+      </ons-list>
 
-    <!-- <ons-list-header>Expandable</ons-list-header>
+      <!-- List ends here -->
 
-    <ons-list-item expandable>
-      Tap to expand
-      <div class="expandable-content">Expandable content</div>
-    </ons-list-item>
+    </ons-page>
+  </template>
 
-    <ons-list-header>Tappable / Ripple</ons-list-header>
-    <ons-list-item tappable>Tap me</ons-list-item>
+  <template id="about.html">
+    <ons-page id="settingsPage">
+      <ons-toolbar>
+        <div class="left">
+          <ons-toolbar-button onclick="fn.open()">
+            <ons-icon icon="md-menu"></ons-icon>
+          </ons-toolbar-button>
+        </div>
+        <div class="center">
+          Settings/Help
+        </div>
+      </ons-toolbar>
 
-    <ons-list-header>Chevron</ons-list-header>
-    <ons-list-item modifier="chevron" tappable>Chevron</ons-list-item>
+      <!-- Items start -->
+      <ul class="list">
+        <li class="list-item">
+          <div class="list-item__center">
+            <div class="list-item__title">
+              Reminder Time
+            </div>
+            <div class="list-item__subtitle" >
+              Set the length of time an item can sit unused before you're reminded of it.
+            </div>
+            <div id="reminderTimeSubtitle">
+            </div>
+          </div>
+        </li>
+        <div><input type="text" id="reminderTimeInput" class="left" class="text-input" placeholder="Enter a new duration in MONTHS" value=""></div>
+        <ons-button id="setReminderButton" onclick="setReminderTime()">Submit</ons-button>
+      </ul>
 
-
-
-    <ons-list-header>Switch</ons-list-header>
-    <ons-list-item>
-      <div class="center">
-        Turn it on
-      </div>
-      <div class="right">
-        <ons-switch></ons-switch>
-      </div>
-    </ons-list-item>
-
-    <ons-list-header>Switch and icon</ons-list-header>
-    <ons-list-item>
-      <div class="left">
-        <ons-icon icon="md-face" class="list-item__icon"></ons-icon>
-      </div>
-      <div class="center">
-        Icon and switch
-      </div>
-      <div class="right">
-        <ons-switch></ons-switch>
-      </div>
-    </ons-list-item>
-
-    <ons-list-header>No divider</ons-list-header>
-    <ons-list-item modifier="nodivider">Item A</ons-list-item>
-    <ons-list-item modifier="nodivider">Item B</ons-list-item>
-
-    <ons-list-header>Long divider</ons-list-header>
-    <ons-list-item modifier="longdivider">Item A</ons-list-item>
-    <ons-list-item modifier="longdivider">Item B</ons-list-item> -->
-  </ons-list>
-
-	<!-- List ends here -->
-
-  </ons-page>
-</template>
-
-<template id="about.html">
-  <ons-page>
-    <ons-toolbar>
-      <div class="left">
-        <ons-toolbar-button onclick="fn.open()">
-          <ons-icon icon="md-menu"></ons-icon>
-        </ons-toolbar-button>
-      </div>
-      <div class="center">
-        About
-      </div>
-    </ons-toolbar>
-  </ons-page>
-</template>
+    </ons-page>
+  </template>
 </body>
 
 <script src="javascript.js"></script>

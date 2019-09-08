@@ -5,7 +5,7 @@ Next up:
 	tutorial == have the local storage done, just need to implement the first time login
 	settings? == reminders, 
 	add date logs== done as well, just make it pretty
-	add in reminders== need to tally up the stored dates, and then find the difference then push a reminder if need be
+	add in reminders== done! NEED TO FIX THE SPAN
 	make a cool looking avatar
 	
 Tutorial:
