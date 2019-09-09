@@ -24,8 +24,9 @@ document.addEventListener('init', function(event){
 //for pressing the enter keys
 window.addEventListener("keypress", keyPress, false);
 function keyPress(key) {
-	if (key.key == "Enter" && document.getElementById("submitButton")!=null){
-		document.getElementById("submitButton").click();
+	if (key.key == "Enter"){
+		// document.getElementById("submitButton").click();
+		submit();
 
 	}
 

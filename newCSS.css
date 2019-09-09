@@ -1,11 +1,55 @@
 #commandInputDIV{
-	margin-top: 25%;
+	text-align: center;
+	margin-top: 22%;
+
+}
+#commandInput{
+	border-radius: 10px/10px;
+	background-color: #edeff0;
 }
 
-/* #submitButton{
-	background-color: black;
-} */
+#welcomeBack{
+	text-align: center;
+	padding-top: 15%;
+	font-size: 20px;
+}
+#welcomeBackName{
+	color: #455961;
+	text-align: center;
 
-/* #homeToolBar{
-	background-color: rgba(255, 0, 0, 0.5);;
-} */
+}
+
+#welcomeBackSub{
+	color: #cfe7f7;
+	text-align: center;
+	font-size: 70%;
+	padding-top: 3%;
+}
+
+
+#mainPageTopHalf{
+	height: 30%;
+	background-color: #95B8E1;
+	border-bottom-left-radius: 11%;
+	border-bottom-right-radius: 11%;
+	color: white;
+	position: fixed;
+	z-index: 1;
+	width:100%;
+
+}
+
+#home .page__background{
+	  background-color: white;
+		color: white;
+}
+
+
+
+.box1{
+	width: 50%;
+	height: 45%;
+	margin-left: 25%;
+	background-color: pink;
+	z-index: 0;
+}

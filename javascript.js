@@ -89,7 +89,7 @@ var submit = function() {
 				ons.notification.toast("It's already in your "+newLocation+" but I guess I'll move it again just because you told me to...", {animation: 'ascend', timeout:"3000"});
 			}
 			else{
-				toolBarBlink("rgba(73, 252, 142");
+				// toolBarBlink("rgba(73, 252, 142");
 				ons.notification.toast("Moved successfully to "+newLocation+" from "+oldLocation+"!", {animation: 'ascend', timeout:"2000"});
 				// ons.notification.toast(targetItem+" "+oldLocation+" "+newLocation, {animation: 'ascend', timeout:"1000"});
 				deleteItem(targetID)
@@ -100,7 +100,7 @@ var submit = function() {
 			}
 		}
 		else{
-			toolBarBlink("rgba(73, 252, 142");
+			// toolBarBlink("rgba(73, 252, 142");
 			document.getElementById("results").innerHTML=" Woops! Looks like that item isn't stored yet... But I'll make a new item just for you";
 			ons.notification.toast('Stored', {animation: 'ascend', timeout:"1000"});
 			var date= new Date();
@@ -139,7 +139,7 @@ var submit = function() {
 				ons.notification.toast("It's already in your "+newLocation+" but I guess I'll move it again just because you told me to...", {animation: 'ascend', timeout:"3000"});
 			}
 			else{
-				toolBarBlink("rgba(73, 252, 142");
+				// toolBarBlink("rgba(73, 252, 142");
 				ons.notification.toast("Moved successfully to "+newLocation+" from "+oldLocation+"!", {animation: 'ascend', timeout:"2000"});
 				// ons.notification.toast(targetItem+" "+oldLocation+" "+newLocation, {animation: 'ascend', timeout:"1000"});
 				deleteItem(targetID)
@@ -150,7 +150,7 @@ var submit = function() {
 
 		}
 		else{
-			toolBarBlink("rgba(73, 252, 142");
+			// toolBarBlink("rgba(73, 252, 142");
 			ons.notification.toast('Stored', {animation: 'ascend', timeout:"1000"});
 			var location= command.slice(command.indexOf(keywordStore)+keywordStore.length,command.length);
 			var date= new Date();
@@ -176,13 +176,13 @@ var submit = function() {
 	if(findCommandSuccess==true && moveCommandSuccess== false && storeCommandSuccess==false){
 		var targetItem=command.slice(keywordFind.length,command.length);
 		if(globalItemArray.includes(targetItem)){
-			toolBarBlink("rgba(73, 252, 142");
+			// toolBarBlink("rgba(73, 252, 142");
 			displayResult(globalLocationArray[globalItemArray.indexOf(targetItem)],targetItem)
 			ons.notification.toast("Found!", {animation: 'ascend', timeout:"1000"});
 			document.getElementById('commandInput').value=""; //resets it back to clear
 		}
 		else{
-			toolBarBlink("rgba(255, 0, 0");
+			// toolBarBlink("rgba(255, 0, 0");
 			document.getElementById("results").innerHTML="";
 			ons.notification.toast("No such item!", {animation: 'ascend', timeout:"1000"});
 		}
@@ -190,7 +190,7 @@ var submit = function() {
 	}
 
 	if(moveCommandSuccess==false && findCommandSuccess==false && storeCommandSuccess==false){
-		toolBarBlink("rgba(255, 0, 0");
+		// toolBarBlink("rgba(255, 0, 0");
 
 		document.getElementById("results").innerHTML="Error! You have not entered a correct command. Please try again or visit the 'help' page to find a quick tutorial on how to use our very intuitive app";
 		if(command=="fuck you"){ //incase anyone says anything bad to my command center >:(
@@ -200,7 +200,7 @@ var submit = function() {
 };
 
 var displayResult=function(result,targetItem){
-	var resultSentencePart1BankArray=["Last time I heard, you put your ", "I clearly remember you putting your ","Hmmmm, prove me wrong, but I think your "]
+	var resultSentencePart1BankArray=["Last time I heard, your ", "I clearly remember you putting your ","Hmmmm, prove me wrong, but I think your "]
 	var resultSentencePart2BankArray=[" is in your "];
 	var dateString= globalDateArray[globalItemArray.indexOf(targetItem)];
 	document.getElementById("results").innerHTML=resultSentencePart1BankArray[Math.floor(Math.random()*(resultSentencePart1BankArray.length))]+targetItem+resultSentencePart2BankArray[Math.floor(Math.random()*(resultSentencePart2BankArray.length))]+result+" on "+months[dateString.slice(dateString.indexOf("::")+2,dateString.indexOf(":::"))]+" "+dateString.slice(dateString.indexOf(":::")+3,dateString.length)+", "+dateString.slice(0,dateString.indexOf("::"));
@@ -232,17 +232,17 @@ var hideAll=function(){
 		}
 	}
 }
-
-var toolBarBlink=function(color){
-	document.getElementById("homeToolBar").style.backgroundColor=color+", 0.5)";
-	setTimeout(function(){document.getElementById("homeToolBar").style.backgroundColor="white"	},150);
-	setTimeout(function(){document.getElementById("homeToolBar").style.backgroundColor=color+", 0.5)"	},300);
-	setTimeout(function(){document.getElementById("homeToolBar").style.backgroundColor="white"	},450);
-	setTimeout(function(){document.getElementById("homeToolBar").style.backgroundColor=color+", 0.5)"	},600);
-	setTimeout(function(){document.getElementById("homeToolBar").style.backgroundColor="white"	},750);
-	// setTimeout(function(){document.getElementById("homeToolBar").style.backgroundColor=color+", 0.5)"	},900);
-	// setTimeout(function(){document.getElementById("homeToolBar").style.backgroundColor="white"	},1050);
-}
+// don't need this anymore
+// var toolBarBlink=function(color){
+// 	document.getElementById("homeToolBar").style.backgroundColor=color+", 0.5)";
+// 	setTimeout(function(){document.getElementById("homeToolBar").style.backgroundColor="white"	},150);
+// 	setTimeout(function(){document.getElementById("homeToolBar").style.backgroundColor=color+", 0.5)"	},300);
+// 	setTimeout(function(){document.getElementById("homeToolBar").style.backgroundColor="white"	},450);
+// 	setTimeout(function(){document.getElementById("homeToolBar").style.backgroundColor=color+", 0.5)"	},600);
+// 	setTimeout(function(){document.getElementById("homeToolBar").style.backgroundColor="white"	},750);
+// 	// setTimeout(function(){document.getElementById("homeToolBar").style.backgroundColor=color+", 0.5)"	},900);
+// 	// setTimeout(function(){document.getElementById("homeToolBar").style.backgroundColor="white"	},1050);
+// }
 
 //working on it rn
 var runTutorial=function(){
