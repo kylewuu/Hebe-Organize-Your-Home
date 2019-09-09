@@ -1,55 +1,85 @@
-#commandInputDIV{
-	text-align: center;
-	margin-top: 22%;
-
-}
-#commandInput{
-	border-radius: 10px/10px;
-	background-color: #edeff0;
-}
-
-#welcomeBack{
-	text-align: center;
-	padding-top: 15%;
-	font-size: 20px;
-}
-#welcomeBackName{
-	color: #455961;
-	text-align: center;
-
-}
-
-#welcomeBackSub{
-	color: #cfe7f7;
-	text-align: center;
-	font-size: 70%;
-	padding-top: 3%;
-}
-
-
 #mainPageTopHalf{
-	height: 30%;
+	height: 35vh;
 	background-color: #95B8E1;
 	border-bottom-left-radius: 11%;
 	border-bottom-right-radius: 11%;
 	color: white;
 	position: fixed;
-	z-index: 1;
 	width:100%;
+	overflow: inherit;
+}
+
+#commandInputDIV{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 12vh;
+	display:table;
 
 }
+#commandInput{
+	border-radius: 10px/10px;
+	background-color: #edeff0;
+	width: 100%;
+}
+
+#welcomeBack{
+	/* text-align: center; */
+	margin-left: auto;
+	margin-right: auto;
+	display:table;
+	margin-top: 10vh;
+	max-height: inherit;
+	/* padding-top: 15%; */
+	font-size: 20px;
+
+	/* box-sizing: border-box; */
+}
+#welcomeBackName{
+	color: #455961;
+	/* text-align: center; */
+	/* margin: auto; */
+}
+
+#welcomeBackSub{
+	color: #cfe7f7;
+	margin: auto;
+	display:table;
+	/* margin: auto; */
+	font-size: 12px;
+	margin-top: 3vh;
+}
+
+/* If the screen is somehow smaller than 650px */
+@media only screen and (max-height: 650px) {
+  #welcomeBackSub{
+		margin-top:0;
+	}
+	#welcomeBack{
+		margin-top:0;
+	}
+	#commandInputDIV{
+		margin-top: 0;
+	}
+}
+
 
 #home .page__background{
 	  background-color: white;
 		color: white;
 }
 
+#itemListTemp{
+	margin-top: 80%;
+	/* width: 100%; */
+	height: 100%;
 
+}
+#box1{
+	/* width: 100%; */
+	/* float: left; */
+	/* padding-top:30%; */
+	/* margin-left: 10%; */
+	background-color:  pink;
+	height: 30%;
 
-.box1{
-	width: 50%;
-	height: 45%;
-	margin-left: 25%;
-	background-color: pink;
-	z-index: 0;
 }
