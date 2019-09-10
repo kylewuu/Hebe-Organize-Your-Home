@@ -43,7 +43,7 @@ var submit = function() {
 
 	var junkWordsFiltering=['i put my ', 'i put ','put my ','put ', 'store my ','i stored my ','store ','add ','insert my ','insert ','place my ','place '];
 	var keywordsStore= [' in ', ' into ',' to ', ' on ', ' beside ', ' with ', ' around ', ' on top ', ' in my ', ' on my ', ' beside my ', ' to my ',' with my ', ' around my ', ' on top my ', ' in the ', ' to the ',' on the ', ' beside the ', ' with the ', ' around the ', ' on top the ']//keywords that the comand looks for to store
-	var keywordsFind=['where is ', 'where is my ','where are my '];
+	var keywordsFind=['where ','where is ', 'where is my ','where are my '];
 
 	var keywordsMove=['move ','move my ','move the ','moved ','moved the ','moved my '];
 	var keywordsMove1=[' to ',' to my ',' to the ',' into ',' into the ',' into my '];
@@ -76,7 +76,7 @@ var submit = function() {
 	}
 
 	if(moveCommandSuccess==true){
-		document.getElementById("results").innerHTML="";
+		// document.getElementById("results").innerHTML="";
 		var targetItem=command.slice(keywordMove.length,command.indexOf(keywordMove1));
 		var newLocation= command.slice(command.indexOf(keywordMove1)+keywordMove1.length,command.length);
 
@@ -115,7 +115,7 @@ var submit = function() {
 	}
 
 	//storing only--------------
-	//tesitng to see if the command contains those keywords
+	//testing to see if the command contains those keywords
 	if(moveCommandSuccess==false){
 		for(var i=0;i<keywordsStore.length;i++){
 			keywordStoreTemp=keywordsStore[i];
@@ -180,7 +180,7 @@ var submit = function() {
 	}
 
 	if(findCommandSuccess==true && moveCommandSuccess== false && storeCommandSuccess==false){
-		var targetItem=command.slice(keywordFind.length,command.length);
+		var targetItem=command.slice(keywordFind.length,command.length).trim();
 		if(globalItemArray.includes(targetItem)){
 
 			showToast(displayResult(globalLocationArray[globalItemArray.indexOf(targetItem)],targetItem));
@@ -197,9 +197,12 @@ var submit = function() {
 	if(moveCommandSuccess==false && findCommandSuccess==false && storeCommandSuccess==false){
 		// toolBarBlink("rgba(255, 0, 0");
 
-		document.getElementById("results").innerHTML="Error! You have not entered a correct command. Please try again or visit the 'help' page to find a quick tutorial on how to use our very intuitive app";
+		showToast("Error! You have not entered a correct command. Please try again or visit the 'help' page to find a quick tutorial on how to use our very intuitive app");
 		if(command=="fuck you"){ //incase anyone says anything bad to my command center >:(
 			showToast("Hey be nice");
+		}
+		if(command=="i love ashley"){
+			showToast("I do too");
 		}
 	}
 };

@@ -9,11 +9,19 @@
 	overflow: inherit;
 	z-index:100;
 }
+#topHalfWhite{
+	height: 38.2vh;
+	background-color: white;
+	z-index: 98;
+	position: fixed;
+	width: 100%;
+
+}
 
 #commandInputDIV{
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 12vh;
+	margin-top: 7.5vh;
 	display:table;
 
 }
@@ -71,6 +79,12 @@
 
 #listContainer{
 		margin-top: 37vh;
+		border: none;
+}
+
+#itemList{
+	color: white;
+	bottom: 10vh;
 }
 
 .itemBox{
@@ -78,7 +92,7 @@
 	height: 8%;
 	width: 90%;
 	border-radius: 10px;
-	margin-top: 2.5vh;
+	margin-top: 1.5vh;
 }
 .storageContent{
 	background-color: white;
@@ -92,15 +106,17 @@
 }
 
 #toast{
-	width: 80vw;
+	width: 100vw;
 	position: fixed;
-	background-color: rgba(219,219,219,0.7);
-	color: #fff;
-	padding: 3vw;
+	background-color: white;
+	color: black;
+	/* padding: 3vw; */
 	bottom: 0;
-	left:7vw;
-	border-top-left-radius: 15px;
-	border-top-right-radius: 15px;
+	z-index: 99;
+	/* left:7vw; */
+	/* border-top-left-radius: 15px;
+	border-top-right-radius: 15px; */
+	height: 22vh;
 	/* -webkit-transform: translateZ(0);
 	transform: translateZ(0); */
 }

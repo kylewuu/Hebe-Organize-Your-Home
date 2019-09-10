@@ -84,7 +84,7 @@ var renderItems= function(tx, rs){
 	var headerIDTemp="";
 	var dateListArray=new Array(rs.rows.length);
 	var storageAlignArray=["itemBoxLeft","itemBoxRight"]
-	var storageBoxColorArray=["#FFB5E8","##FF9CEE","#FFCCF9","##FFDFD3","#90C978","#AFD5AA","#83C6DD","##5DB1D1","#FFCCF9","#F69CC4","##F4ADC6","#FDFD95","#AFC3D2","##7799CC"] //plug in actual colors
+	var storageBoxColorArray=["#dae9f0","#ffefdb","#dbcede","#f5e1e2","#fff5c4","#e4f0d8","#AFC3D2","#7799CC"] //plug in actual colors
 
 	//for loop for storing it into an array
 	//-----
@@ -104,7 +104,10 @@ var renderItems= function(tx, rs){
 	}
 
 	//first time around
-	output+= "<ons-list-item expandable id="+"ID"+0+" class='itemBox "+storageAlignArray[0]+"' style='background-color:"+storageBoxColorArray[0]+"'>" + locationListArray[0]+ "<div class='expandable-content '>"+"<ons-list-item class='storageContent'>" +itemListArray[0] +"<div class='right' style='float: right'><span >"+getDate(dateListArray[0])+"</nbsp></span> <ons-button onclick='deleteItem("+idListArray[0]+")'><ons-icon icon= 'trash'></ons-icon></ons-button></div></ons-list-item>";
+	if(dateListArray[0]!=null){
+		output+= "<ons-list-item expandable id="+"ID"+0+" class='itemBox "+storageAlignArray[0]+"' style='background-color:"+storageBoxColorArray[0]+"' modifier='nodivider'>" + locationListArray[0]+ "<div class='expandable-content '>"+"<ons-list-item class='storageContent' m>" +itemListArray[0] +"<div class='right' style='float: right'><span >"+getDate(dateListArray[0])+"</nbsp></span> <ons-button onclick='deleteItem("+idListArray[0]+")'><ons-icon icon= 'trash'></ons-icon></ons-button></div></ons-list-item>";
+
+	}
 	inCollapseableFlag=true;
 	headerIDArray[0]=0;
 	headerIDTemp=0;
@@ -125,7 +128,7 @@ var renderItems= function(tx, rs){
 		//starts a new list
 		if(locationListArray[i]!=locationListArray[i-1] && inCollapseableFlag==false){
 			headerIDTemp+=1;
-			output+= "<ons-list-item expandable id='ID"+headerIDTemp+"' class='itemBox "+storageAlignArray[headerIDTemp%2]+"' style='background-color:"+storageBoxColorArray[headerIDTemp]+"'>" + locationListArray[i]+ "<div class='expandable-content'>"+"<ons-list-item class='storageContent'>" +itemListArray[i] +"<div  class='right'><span style='padding-right: 30%'>"+getDate(dateListArray[i])+"</span> <ons-button onclick='deleteItem("+idListArray[i]+")'><ons-icon icon= 'trash'></ons-icon></ons-button></div></ons-list-item>";
+			output+= "<ons-list-item expandable id='ID"+headerIDTemp+"' class='itemBox "+storageAlignArray[headerIDTemp%2]+"' style='background-color:"+storageBoxColorArray[headerIDTemp%(storageBoxColorArray.length-1)]+"' modifier='nodivider'>" + locationListArray[i]+ "<div class='expandable-content'>"+"<ons-list-item class='storageContent'>" +itemListArray[i] +"<div  class='right'><span style='padding-right: 30%'>"+getDate(dateListArray[i])+"</span> <ons-button onclick='deleteItem("+idListArray[i]+")'><ons-icon icon= 'trash'></ons-icon></ons-button></div></ons-list-item>";
 			inCollapseableFlag=true;
 			if(i==itemListArray.length-1){
 				output+="</ons-list-item>"
