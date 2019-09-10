@@ -13,6 +13,7 @@ if(window.localStorage.getItem('reminderTime')==null){
 	window.localStorage.setItem('reminderTime', '12');
 }
 
+
 // var test=function(){
 // 	var count=window.localStorage.getItem('count');
 // 	count+=1;
@@ -42,7 +43,7 @@ var submit = function() {
 
 	var junkWordsFiltering=['i put my ', 'i put ','put my ','put ', 'store my ','i stored my ','store ','add ','insert my ','insert ','place my ','place '];
 	var keywordsStore= [' in ', ' into ',' to ', ' on ', ' beside ', ' with ', ' around ', ' on top ', ' in my ', ' on my ', ' beside my ', ' to my ',' with my ', ' around my ', ' on top my ', ' in the ', ' to the ',' on the ', ' beside the ', ' with the ', ' around the ', ' on top the ']//keywords that the comand looks for to store
-	var keywordsFind=['where is my ','where are my '];
+	var keywordsFind=['where is ', 'where is my ','where are my '];
 
 	var keywordsMove=['move ','move my ','move the ','moved ','moved the ','moved my '];
 	var keywordsMove1=[' to ',' to my ',' to the ',' into ',' into the ',' into my '];
@@ -86,11 +87,14 @@ var submit = function() {
 			var oldLocation= globalLocationArray[targetItemIndex];
 
 			if(oldLocation==newLocation){
-				ons.notification.toast("It's already in your "+newLocation+" but I guess I'll move it again just because you told me to...", {animation: 'ascend', timeout:"3000"});
+				// ons.notification.toast("It's already in your "+newLocation+" but I guess I'll move it again just because you told me to...", {animation: 'ascend', timeout:"3000"});
+				showToast("It's already in your "+newLocation+" but I guess I'll move it again just because you told me to...");
+				document.getElementById('commandInput').value=""; //resets it back to clear
 			}
 			else{
 				// toolBarBlink("rgba(73, 252, 142");
-				ons.notification.toast("Moved successfully to "+newLocation+" from "+oldLocation+"!", {animation: 'ascend', timeout:"2000"});
+				// ons.notification.toast("Moved successfully to "+newLocation+" from "+oldLocation+"!", {animation: 'ascend', timeout:"2000"});
+				showToast("Moved successfully to "+newLocation+" from "+oldLocation+"!");
 				// ons.notification.toast(targetItem+" "+oldLocation+" "+newLocation, {animation: 'ascend', timeout:"1000"});
 				deleteItem(targetID)
 				var date= new Date();
@@ -101,8 +105,8 @@ var submit = function() {
 		}
 		else{
 			// toolBarBlink("rgba(73, 252, 142");
-			document.getElementById("results").innerHTML=" Woops! Looks like that item isn't stored yet... But I'll make a new item just for you";
-			ons.notification.toast('Stored', {animation: 'ascend', timeout:"1000"});
+
+			showToast(" Woops! Looks like that item isn't stored yet... But I'll make a new item just for you");
 			var date= new Date();
 			var combination=newLocation.trim()+";"+targetItem.trim()+":"+date.getFullYear()+"::"+date.getMonth()+":::"+date.getDate();
 			storeItem(combination); //temporarily storing the command and not the processed item
@@ -136,11 +140,13 @@ var submit = function() {
 			var newLocation=command.slice(command.indexOf(keywordStore)+keywordStore.length,command.length);
 
 			if(oldLocation==newLocation){
-				ons.notification.toast("It's already in your "+newLocation+" but I guess I'll move it again just because you told me to...", {animation: 'ascend', timeout:"3000"});
+				// ons.notification.toast("It's already in your "+newLocation+" but I guess I'll move it again just because you told me to...", {animation: 'ascend', timeout:"3000"});
+				showToast("It's already in your "+newLocation+" but I guess I'll move it again just because you told me to...");
 			}
 			else{
 				// toolBarBlink("rgba(73, 252, 142");
-				ons.notification.toast("Moved successfully to "+newLocation+" from "+oldLocation+"!", {animation: 'ascend', timeout:"2000"});
+				// ons.notification.toast("Moved successfully to "+newLocation+" from "+oldLocation+"!", {animation: 'ascend', timeout:"2000"});
+				showToast("Moved successfully to "+newLocation+" from "+oldLocation+"!");
 				// ons.notification.toast(targetItem+" "+oldLocation+" "+newLocation, {animation: 'ascend', timeout:"1000"});
 				deleteItem(targetID)
 				var combination=newLocation.trim()+";"+item.trim();
@@ -151,7 +157,7 @@ var submit = function() {
 		}
 		else{
 			// toolBarBlink("rgba(73, 252, 142");
-			ons.notification.toast('Stored', {animation: 'ascend', timeout:"1000"});
+			showToast("Stored");
 			var location= command.slice(command.indexOf(keywordStore)+keywordStore.length,command.length);
 			var date= new Date();
 			var combination=location.trim()+";"+item.trim()+":"+date.getFullYear()+"::"+date.getMonth()+":::"+date.getDate();
@@ -176,15 +182,14 @@ var submit = function() {
 	if(findCommandSuccess==true && moveCommandSuccess== false && storeCommandSuccess==false){
 		var targetItem=command.slice(keywordFind.length,command.length);
 		if(globalItemArray.includes(targetItem)){
-			// toolBarBlink("rgba(73, 252, 142");
-			displayResult(globalLocationArray[globalItemArray.indexOf(targetItem)],targetItem)
-			ons.notification.toast("Found!", {animation: 'ascend', timeout:"1000"});
+
+			showToast(displayResult(globalLocationArray[globalItemArray.indexOf(targetItem)],targetItem));
 			document.getElementById('commandInput').value=""; //resets it back to clear
 		}
 		else{
 			// toolBarBlink("rgba(255, 0, 0");
 			document.getElementById("results").innerHTML="";
-			ons.notification.toast("No such item!", {animation: 'ascend', timeout:"1000"});
+			showToast("No such item!")
 		}
 
 	}
@@ -194,16 +199,16 @@ var submit = function() {
 
 		document.getElementById("results").innerHTML="Error! You have not entered a correct command. Please try again or visit the 'help' page to find a quick tutorial on how to use our very intuitive app";
 		if(command=="fuck you"){ //incase anyone says anything bad to my command center >:(
-			ons.notification.toast("Hey be nice", {animation: 'ascend', timeout:"1000"});
+			showToast("Hey be nice");
 		}
 	}
 };
 
 var displayResult=function(result,targetItem){
-	var resultSentencePart1BankArray=["Last time I heard, your ", "I clearly remember you putting your ","Hmmmm, prove me wrong, but I think your "]
+	var resultSentencePart1BankArray=["Last time I heard, your ", "I clearly remember your ","Hmmmm, prove me wrong, but I think your "]
 	var resultSentencePart2BankArray=[" is in your "];
 	var dateString= globalDateArray[globalItemArray.indexOf(targetItem)];
-	document.getElementById("results").innerHTML=resultSentencePart1BankArray[Math.floor(Math.random()*(resultSentencePart1BankArray.length))]+targetItem+resultSentencePart2BankArray[Math.floor(Math.random()*(resultSentencePart2BankArray.length))]+result+" on "+months[dateString.slice(dateString.indexOf("::")+2,dateString.indexOf(":::"))]+" "+dateString.slice(dateString.indexOf(":::")+3,dateString.length)+", "+dateString.slice(0,dateString.indexOf("::"));
+	return resultSentencePart1BankArray[Math.floor(Math.random()*(resultSentencePart1BankArray.length))]+targetItem+resultSentencePart2BankArray[Math.floor(Math.random()*(resultSentencePart2BankArray.length))]+result+" on "+months[dateString.slice(dateString.indexOf("::")+2,dateString.indexOf(":::"))]+" "+dateString.slice(dateString.indexOf(":::")+3,dateString.length)+", "+dateString.slice(0,dateString.indexOf("::"));
 }
 
 //side menu
@@ -232,17 +237,6 @@ var hideAll=function(){
 		}
 	}
 }
-// don't need this anymore
-// var toolBarBlink=function(color){
-// 	document.getElementById("homeToolBar").style.backgroundColor=color+", 0.5)";
-// 	setTimeout(function(){document.getElementById("homeToolBar").style.backgroundColor="white"	},150);
-// 	setTimeout(function(){document.getElementById("homeToolBar").style.backgroundColor=color+", 0.5)"	},300);
-// 	setTimeout(function(){document.getElementById("homeToolBar").style.backgroundColor="white"	},450);
-// 	setTimeout(function(){document.getElementById("homeToolBar").style.backgroundColor=color+", 0.5)"	},600);
-// 	setTimeout(function(){document.getElementById("homeToolBar").style.backgroundColor="white"	},750);
-// 	// setTimeout(function(){document.getElementById("homeToolBar").style.backgroundColor=color+", 0.5)"	},900);
-// 	// setTimeout(function(){document.getElementById("homeToolBar").style.backgroundColor="white"	},1050);
-// }
 
 //working on it rn
 var runTutorial=function(){
@@ -266,4 +260,22 @@ var setReminderTimeSubtitle=function(){
 		document.getElementById('reminderTimeSubtitle').innerHTML="It's currently set to: 12 months"
 	}
 
+}
+
+function showToast(prompt) {
+  var x = document.getElementById("toast");
+	x.innerHTML=prompt;
+	setTimeout(function(){
+		x.innerHTML="Message board! ^_^";
+	},4000)
+}
+
+var randomInt=function(min,max){
+	min=parseInt(min);
+	max=parseInt(max);
+	return Math.floor((Math.random()*(max-min))+min)
+}
+
+var getDate=function(dateString){
+	return (parseInt(dateString.slice(dateString.indexOf("::")+2,dateString.indexOf(":::")))+1).toString()+"/"+dateString.slice(dateString.indexOf(":::")+3,dateString.length)+"/"+dateString.slice(0,dateString.indexOf("::"));
 }
