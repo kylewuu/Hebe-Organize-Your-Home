@@ -5,4 +5,4 @@ add in tutorial
 	make sure to add the option to enter name
 add in the other page
 	add in back button feature (can be found on onsen page)
-add in dates
+make date look better
