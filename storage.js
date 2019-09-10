@@ -104,7 +104,7 @@ var renderItems= function(tx, rs){
 	}
 
 	//first time around
-	output+= "<ons-list-item expandable id="+"ID"+0+" class='itemBox "+storageAlignArray[0]+"' style='background-color:"+storageBoxColorArray[0]+"'>" + locationListArray[0]+ "<div class='expandable-content '>"+"<ons-list-item class='storageContent'>" +itemListArray[0] +"<div class='right' style='float: right'><span style='padding-right: 30%'>"+getDate(dateListArray[0])+"</span> <ons-button onclick='deleteItem("+idListArray[0]+")'><ons-icon icon= 'trash'></ons-icon></ons-button></div></ons-list-item>";
+	output+= "<ons-list-item expandable id="+"ID"+0+" class='itemBox "+storageAlignArray[0]+"' style='background-color:"+storageBoxColorArray[0]+"'>" + locationListArray[0]+ "<div class='expandable-content '>"+"<ons-list-item class='storageContent'>" +itemListArray[0] +"<div class='right' style='float: right'><span >"+getDate(dateListArray[0])+"</nbsp></span> <ons-button onclick='deleteItem("+idListArray[0]+")'><ons-icon icon= 'trash'></ons-icon></ons-button></div></ons-list-item>";
 	inCollapseableFlag=true;
 	headerIDArray[0]=0;
 	headerIDTemp=0;
@@ -114,8 +114,9 @@ var renderItems= function(tx, rs){
 
 		//if it's still the same item
 		if(inCollapseableFlag==true && locationListArray[i]==locationListArray[i-1]){
-			output += "<ons-list-item class='storageContent'>"+itemListArray[i] +"<div class='right'><span style='padding-right: 30%'>"+getDate(dateListArray[i])+"</span> <ons-button onclick='deleteItem("+idListArray[i]+")'><ons-icon icon= 'trash'></ons-icon></ons-button></div></ons-list-item>";
+			output += "<ons-list-item class='storageContent'>"+itemListArray[i] +"<div class='right'><span style='padding-right: 30%'>"+getDate(dateListArray[i])+"</span> <ons-button onclick='deleteItem("+idListArray[i]+")'><ons-icon icon= 'trash' ></ons-icon></ons-button></div></ons-list-item>";
 		}
+
 		//if it's no longer the same item
 		else if(locationListArray[i]!=locationListArray[i-1] && inCollapseableFlag== true){
 			inCollapseableFlag=false;
@@ -133,6 +134,7 @@ var renderItems= function(tx, rs){
 
 		headerIDArray[i]=headerIDTemp;
 	}
+
 
 	//updating the global variables
 	globalItemArray=itemListArray;
