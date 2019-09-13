@@ -203,6 +203,7 @@ var submit = function() {
 		}
 		if(command=="i love ashley"){
 			showToast("I do too");
+			document.getElementById("commandInput").value="";
 		}
 	}
 };
@@ -281,4 +282,12 @@ var randomInt=function(min,max){
 
 var getDate=function(dateString){
 	return (parseInt(dateString.slice(dateString.indexOf("::")+2,dateString.indexOf(":::")))+1).toString()+"/"+dateString.slice(dateString.indexOf(":::")+3,dateString.length)+"/"+dateString.slice(0,dateString.indexOf("::"));
+}
+
+//Tutorial page
+var tutorialPage = document.getElementById("tutorialPage");
+tutorialPage.show();
+
+var closeTutorial=function(){
+	tutorialPage.hide();
 }

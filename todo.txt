@@ -3,6 +3,8 @@ add in the bunny png
 	and fix teh thing
 add in tutorial
 	make sure to add the option to enter name
+	make it only come up when it's your first time
 add in the other page
 	add in back button feature (can be found on onsen page)
-make date look better
+make date look better- maybe
+APP NAME

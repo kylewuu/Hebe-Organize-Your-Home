@@ -78,13 +78,15 @@
 }
 
 #listContainer{
-		margin-top: 37vh;
+		/* margin-top: 37vh; */
 		border: none;
 }
 
 #itemList{
 	color: white;
 	bottom: 10vh;
+	margin-top: 37vh;
+	margin-bottom: 22vh;
 }
 
 .itemBox{
@@ -129,48 +131,11 @@
 }
 
 
-/* toast WITH FADE*/
-/* #toast {
-	visibility: hidden;
-	width: 80vw;
-	background-color: rgba(0,0,0,0.5);
-	color: #fff;
-	text-align: center;
-	border-radius: 15px;
-	padding: 3vw;
-	position: fixed;
-	z-index: 99;
-	left: 7vw;
-	bottom: 1vh;
-	font-size: 17px;
-
-
-} */
-
-/* #toast.show {
-  visibility: visible;
-  -webkit-animation: fadein 0.5s, fadeout 0.5s 3.5s;
-
-  animation: fadein 0.5s, fadeout 0.5s 3.5s;
-
-} */
-
-/* @-webkit-keyframes fadein {
-  from {bottom: 0; opacity: 0;}
-  to {bottom: 1vh; opacity: 1;}
+/* Tutorial screen */
+#tutorialPage{
+	background-color: rgba(0,0,0,0.9);
+	border-color: pink;
 }
-
-@keyframes fadein {
-  from {bottom: 0; opacity: 0;}
-  to {bottom: 1vh; opacity: 1;}
+#tutorialContent {
+	text-align: left;
 }
-
-@-webkit-keyframes fadeout {
-  from {bottom: 1vh; opacity: 1;}
-  to {bottom: 0; opacity: 0;}
-}
-
-@keyframes fadeout {
-  from {bottom: 1vh; opacity: 1;}
-  to {bottom: 0; opacity: 0;}
-} */

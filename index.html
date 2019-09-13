@@ -11,9 +11,6 @@
 
 <body>
 
-
-
-
   <ons-splitter>
     <ons-splitter-side id="menu" side="left" width="220px" collapse swipeable>
       <ons-page>
@@ -49,11 +46,8 @@
 
       </div>
       <div id="topHalfWhite">
-        
-      </div>
 
-			<div id="listContainer">
-			</div>
+      </div>
 
 			<ons-list id="itemList" modifier="noborder">
 				<!-- <ons-list-header>Default</ons-list-header> -->
@@ -61,9 +55,8 @@
 				<ons-list-item>went</ons-list-item>
 				<ons-list-item>wrong</ons-list-item>
 
+
 			</ons-list>
-
-
 
 			<div id="toast">Message board! ^_^</div>
 
@@ -72,40 +65,60 @@
 
 
 
-
-
-
-        <!-- <div class="box1" style="background-color: blue;">
-
-        </div>
-        <div class="box1" style="background-color: black">
-
-        </div>
-        <div class="box1">
-
-        </div> -->
-
-
-
-        <!-- <ons-toolbar id="homeToolBar">
-        <div class="left">
-        <ons-toolbar-button onclick="fn.open()">
-        <ons-icon icon="md-menu"></ons-icon>
-      </ons-toolbar-button>
-    </div>
-
-  </ons-toolbar> -->
-  <!-- actual content starts here -->
-
-
-
+<!-- currently useless -->
 <div id="resultDiv" class="center">
   <p id="results" style="text-align: center">
   </p>
 </div>
 
     </ons-page>
+
+
   </template>
+
+  <!-- Tutorial screen modal thing -->
+  <ons-modal direction="up" id="tutorialPage">
+    <div id="tutorialContent">
+      <p>
+        Hey! Welcome to INSERT APP NAME. You store and manage items longterm by telling her in the command line. It’s really that simple. Now I know that you obviously won't use this for little things, but maybe for those things that are worth your time to put it into the app. Things that you use once a year, or once in a while, or just things that you always misplace.
+        </br></br>
+        The app does remind you if you haven’t used an item in over a year (this can be adjusted in the settings), this way, you’ll be able to maybe get rid of some stuff that you don’t actually need but thought you needed.
+        </br></br>
+        Type in a phrase into the command line on the home page.
+        </br></br>
+        The keyword to store stuff is:
+        </br>
+        Item <b>in</b> location
+        </br></br>
+        An example way to move stuff from one place to another is:
+        </br>
+        Move item <b>to</b> new location
+        </br></br>
+        You can also find items with the keywords:
+        </br>
+        <b>Where is</b> my item
+        </br></br>
+
+        These instructions can be accessed from the "i" button on the top right corner. The command input is also fairly intuitive, meaning there are other ways to access these three commands.
+        </br></br>
+        Hope this app helps!
+        </br></br>
+        Things to come later:
+        </br>
+        Multilevel storage eg. bookshelf in the bedroom (As of right now you just have to say “Bedroom bookshelf”
+        </br>
+        Undo button
+        </br>
+        Voice
+
+      </p>
+      <button onclick="closeTutorial()"></button>
+    </div>
+  </ons-modal>
+
+
+
+
 
   <template id="list.html">
     <ons-page id="listPage">
