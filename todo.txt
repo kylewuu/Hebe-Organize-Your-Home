@@ -4,7 +4,7 @@ add in the bunny png
 add in tutorial= done!
 add in the other page
 	add in back button feature (can be found on onsen page)
-make date look better- maybe
+make date look better- maybe== DONE
 APP NAME
-make the feature where it searches for everything
-hideall
+make the feature where it searches for everything== done!!
+hideall== done

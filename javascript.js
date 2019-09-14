@@ -296,10 +296,6 @@ var hideAll=function(){
 	}
 }
 
-//working on it rn
-var runTutorial=function(){
-
-};
 
 var setReminderTime=function(){
 	var reminderTime=parseInt(document.getElementById('reminderTimeInput').value);
@@ -308,6 +304,7 @@ var setReminderTime=function(){
 	}
 	setReminderTimeSubtitle();
 	document.getElementById('reminderTimeInput').value="";
+	bootUpFlag=false;
 
 };
 var setReminderTimeSubtitle=function(){
@@ -359,6 +356,11 @@ var nextTutorialPage1=function(){
 
 var closeTutorial=function(){
 	tutorialPage3.hide();
+}
 
 
+//settings page
+var openSettings=function(){
+	console.log("open settings...");
+	fn.load('about.html');
 }

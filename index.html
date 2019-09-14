@@ -33,6 +33,7 @@
   <template id="home.html">
     <ons-page id="home" class="homePage">
       <div id="mainPageTopHalf">
+          <ons-icon icon="fa-cog" id="settingsButton" onclick="openSettings()" size="140%"></ons-icon>
           <div id="welcomeBack">WELCOME BACK</div>
           <div id="welcomeBackSub">
             what would you like to do today?
@@ -42,6 +43,10 @@
             <input id="commandInput" type="search"  placeholder="Type a command here..." class="search-input" >
             <!-- <ons-input id="commandInput" modifier="underbar" placeholder="Type a command..." float></ons-input> -->
           </div>
+
+          <!-- <ons-button id="hideAllButton" onclick="hideAll()"><ons-icon icon="minus" onclick="hideAll()"></ons-icon></ons-button> -->
+
+          <ons-icon icon="minus" id="hideAllButton" onclick="hideAll()" size="140%"></ons-icon>
 
 
       </div>
@@ -114,9 +119,6 @@
         Voice
 
       </p>
-			<p>
-				One last thing! What's your name?
-			</p>
 
       <button onclick="closeTutorial()" id="closeTutorialButton">Got it!</button>
     </div>
@@ -126,7 +128,7 @@
     <ons-page id="settingsPage">
       <ons-toolbar>
         <div class="left">
-          <ons-toolbar-button onclick="fn.open()">
+          <ons-toolbar-button onclick="fn.load('home.html')">
             <ons-icon icon="md-menu"></ons-icon>
           </ons-toolbar-button>
         </div>

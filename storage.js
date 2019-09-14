@@ -2,7 +2,7 @@ var settingsPageOn=false;
 var homePageOn=false;
 
 document.addEventListener('init', function(event){
-	if(event.target.id== "listPage" ){
+	if(event.target.id== "home" ){
 		openDb();
 		getItems();
 
@@ -13,12 +13,7 @@ document.addEventListener('init', function(event){
 		setReminderTimeSubtitle();
 
 	}
-	else if(event.target.id=="home"){
-		homePageYes=true;
-		settingsPageOn=false;
-		// getReminders();
 
-	}
 });
 
 //for pressing the enter keys
@@ -105,7 +100,7 @@ var renderItems= function(tx, rs){
 
 	//first time around
 	if(dateListArray[0]!=null){
-		output+= "<ons-list-item expandable id="+"ID"+0+" class='itemBox "+storageAlignArray[0]+"' style='background-color:"+storageBoxColorArray[0]+"' modifier='nodivider'>" + locationListArray[0]+ "<div class='expandable-content '>"+"<ons-list-item class='storageContent' m>" +itemListArray[0] +"<div class='right' style='float: right'><span >"+getDate(dateListArray[0])+"</nbsp></span> <ons-button onclick='deleteItem("+idListArray[0]+")'><ons-icon icon= 'trash'></ons-icon></ons-button></div></ons-list-item>";
+		output+= "<ons-list-item expandable id="+"ID"+0+" class='itemBox "+storageAlignArray[0]+"' style='background-color:"+storageBoxColorArray[0]+"' modifier='nodivider'>" + locationListArray[0]+ "<div class='expandable-content '>"+"<ons-list-item class='storageContent' m>" +itemListArray[0] +"<div class='right' style='float: right'><span style='margin-right: 5vw'>"+getDate(dateListArray[0])+"</nbsp></span> <ons-button onclick='deleteItem("+idListArray[0]+")'><ons-icon icon= 'trash'></ons-icon></ons-button></div></ons-list-item>";
 
 	}
 	inCollapseableFlag=true;
@@ -117,7 +112,7 @@ var renderItems= function(tx, rs){
 
 		//if it's still the same item
 		if(inCollapseableFlag==true && locationListArray[i]==locationListArray[i-1]){
-			output += "<ons-list-item class='storageContent'>"+itemListArray[i] +"<div class='right'><span style='padding-right: 30%'>"+getDate(dateListArray[i])+"</span> <ons-button onclick='deleteItem("+idListArray[i]+")'><ons-icon icon= 'trash' ></ons-icon></ons-button></div></ons-list-item>";
+			output += "<ons-list-item class='storageContent'>"+itemListArray[i] +"<div class='right'><span style='margin-right: 5vw'>"+getDate(dateListArray[i])+"</span> <ons-button onclick='deleteItem("+idListArray[i]+")'><ons-icon icon= 'trash' ></ons-icon></ons-button></div></ons-list-item>";
 		}
 
 		//if it's no longer the same item
@@ -128,7 +123,7 @@ var renderItems= function(tx, rs){
 		//starts a new list
 		if(locationListArray[i]!=locationListArray[i-1] && inCollapseableFlag==false){
 			headerIDTemp+=1;
-			output+= "<ons-list-item expandable id='ID"+headerIDTemp+"' class='itemBox "+storageAlignArray[headerIDTemp%2]+"' style='background-color:"+storageBoxColorArray[headerIDTemp%(storageBoxColorArray.length-1)]+"' modifier='nodivider'>" + locationListArray[i]+ "<div class='expandable-content'>"+"<ons-list-item class='storageContent'>" +itemListArray[i] +"<div  class='right'><span style='padding-right: 30%'>"+getDate(dateListArray[i])+"</span> <ons-button onclick='deleteItem("+idListArray[i]+")'><ons-icon icon= 'trash'></ons-icon></ons-button></div></ons-list-item>";
+			output+= "<ons-list-item expandable id='ID"+headerIDTemp+"' class='itemBox "+storageAlignArray[headerIDTemp%2]+"' style='background-color:"+storageBoxColorArray[headerIDTemp%(storageBoxColorArray.length-1)]+"' modifier='nodivider'>" + locationListArray[i]+ "<div class='expandable-content'>"+"<ons-list-item class='storageContent'>" +itemListArray[i] +"<div  class='right'><span style='margin-right: 5vw'>"+getDate(dateListArray[i])+"</span> <ons-button onclick='deleteItem("+idListArray[i]+")'><ons-icon icon= 'trash'></ons-icon></ons-button></div></ons-list-item>";
 			inCollapseableFlag=true;
 			if(i==itemListArray.length-1){
 				output+="</ons-list-item>"
