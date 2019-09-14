@@ -1,10 +1,10 @@
 add in the bunny png
 	make animation
 	and fix teh thing
-add in tutorial
-	make sure to add the option to enter name
-	make it only come up when it's your first time
+add in tutorial= done!
 add in the other page
 	add in back button feature (can be found on onsen page)
 make date look better- maybe
 APP NAME
+make the feature where it searches for everything
+hideall

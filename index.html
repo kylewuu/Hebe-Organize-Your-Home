@@ -33,7 +33,7 @@
   <template id="home.html">
     <ons-page id="home" class="homePage">
       <div id="mainPageTopHalf">
-          <div id="welcomeBack">WELCOME BACK, <span id="welcomeBackName">KYLE</span></div>
+          <div id="welcomeBack">WELCOME BACK</div>
           <div id="welcomeBackSub">
             what would you like to do today?
           </div>
@@ -60,30 +60,26 @@
 
 			<div id="toast">Message board! ^_^</div>
 
-
-
-
-
-
-<!-- currently useless -->
-<div id="resultDiv" class="center">
-  <p id="results" style="text-align: center">
-  </p>
-</div>
-
     </ons-page>
 
 
   </template>
 
-  <!-- Tutorial screen modal thing -->
-  <ons-modal direction="up" id="tutorialPage">
-    <div id="tutorialContent">
+  <!-- Tutorial screen modal thing ------------------------------------------------->
+  <ons-modal direction="up" id="tutorialPage1" class="tutorialPages">
+    <div id="tutorialContent1" class="tutorialContents">
       <p>
-        Hey! Welcome to INSERT APP NAME. You store and manage items longterm by telling her in the command line. It’s really that simple. Now I know that you obviously won't use this for little things, but maybe for those things that are worth your time to put it into the app. Things that you use once a year, or once in a while, or just things that you always misplace.
+        Hey! Welcome to INSERT APP NAME. You store and manage items longterm by telling her in the command line. It’s really that simple. Now I know that you obviously won't use this for little things, but maybe for those things that are worth your time to put it into the app. Things that you use once a year, or once in a while, or just things that you often misplace.
         </br></br>
         The app does remind you if you haven’t used an item in over a year (this can be adjusted in the settings), this way, you’ll be able to maybe get rid of some stuff that you don’t actually need but thought you needed.
-        </br></br>
+
+      </p>
+      <button onclick="nextTutorialPage()" id="nextTutorialPageButton" class="tutorialPageButtons">Next</button>
+    </div>
+  </ons-modal>
+	<ons-modal direction="up" id="tutorialPage2" class="tutorialPages">
+    <div id="tutorialContent2" class="tutorialContents">
+      <p>
         Type in a phrase into the command line on the home page.
         </br></br>
         The keyword to store stuff is:
@@ -97,8 +93,14 @@
         You can also find items with the keywords:
         </br>
         <b>Where is</b> my item
-        </br></br>
+      </p>
+      <button onclick="nextTutorialPage1()" id="nextTutorialPageButton1" class="tutorialPageButtons">Next</button>
+    </div>
+  </ons-modal>
 
+	<ons-modal direction="up" id="tutorialPage3" class="tutorialPages">
+    <div id="tutorialContent3" class="tutorialContents">
+      <p>
         These instructions can be accessed from the "i" button on the top right corner. The command input is also fairly intuitive, meaning there are other ways to access these three commands.
         </br></br>
         Hope this app helps!
@@ -112,40 +114,13 @@
         Voice
 
       </p>
-      <button onclick="closeTutorial()"></button>
+			<p>
+				One last thing! What's your name?
+			</p>
+
+      <button onclick="closeTutorial()" id="closeTutorialButton">Got it!</button>
     </div>
   </ons-modal>
-
-
-
-
-
-  <template id="list.html">
-    <ons-page id="listPage">
-      <ons-toolbar>
-        <div class="left">
-          <ons-toolbar-button onclick="fn.open()">
-            <ons-icon icon="md-menu"></ons-icon>
-          </ons-toolbar-button>
-        </div>
-
-
-
-        <div class="center">
-          List
-        </div>
-
-        <ons-button modifier="quiet" class="right" onclick="hideAll()">hide all</ons-button>
-
-      </ons-toolbar>
-
-      <!-- List starts here -->
-
-
-      <!-- List ends here -->
-
-    </ons-page>
-  </template>
 
   <template id="about.html">
     <ons-page id="settingsPage">

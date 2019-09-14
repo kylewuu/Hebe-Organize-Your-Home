@@ -132,10 +132,21 @@
 
 
 /* Tutorial screen */
-#tutorialPage{
-	background-color: rgba(0,0,0,0.9);
+.tutorialPages{
+	background-color: rgba(255,255,255,0.8);
 	border-color: pink;
+	overflow-y: auto;
 }
-#tutorialContent {
+.tutorialContents{
+	color:black;
 	text-align: left;
+	margin: 3%;
+	overflow-y: auto;
+
+}
+.tutorialPageButtons{
+	bottom: 2vh;
+	width: 20%;
+	margin-left: 70vw;
+	position:fixed;
 }

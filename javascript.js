@@ -4,23 +4,10 @@ var months=["Jan", "Feb", "Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov",
 
 
 // local storage initializations
-if(window.localStorage.getItem('firstTime')==null || window.localStorage.getItem('firstTime')==true){
-	window.localStorage.setItem('firstTime', 'false');
-	// runTutorial();
-}
 
 if(window.localStorage.getItem('reminderTime')==null){
 	window.localStorage.setItem('reminderTime', '12');
 }
-
-
-// var test=function(){
-// 	var count=window.localStorage.getItem('count');
-// 	count+=1;
-// 	window.localStorage.setItem('count',count.toString());
-// 	document.getElementById("test").innerHTML= count.toString();
-// }
-//
 
 var submit = function() {
   var command = document.getElementById('commandInput').value;
@@ -76,7 +63,7 @@ var submit = function() {
 	}
 
 	if(moveCommandSuccess==true){
-		// document.getElementById("results").innerHTML="";
+
 		var targetItem=command.slice(keywordMove.length,command.indexOf(keywordMove1));
 		var newLocation= command.slice(command.indexOf(keywordMove1)+keywordMove1.length,command.length);
 
@@ -128,7 +115,7 @@ var submit = function() {
 	}
 
 	if(storeCommandSuccess==true && moveCommandSuccess==false){
-		document.getElementById("results").innerHTML="";
+
 
 		var item= command.slice(0,command.indexOf(keywordStore))
 		if(globalItemArray.includes(item)){
@@ -188,8 +175,19 @@ var submit = function() {
 		}
 		else{
 			// toolBarBlink("rgba(255, 0, 0");
-			document.getElementById("results").innerHTML="";
+
 			showToast("No such item!")
+
+			if(targetItem.includes(" ")){
+				var targetItemTemp=targetItem;
+
+				while(targetItemTemp.includes(" ")){
+					targetItemTemp=targetItemTemp.replace(" ","");
+				}
+				var separateWordsNum=(targetItem.length-targetItemTemp.length)+1 //this gives the number of separate words there are
+				console.log(separateWordsNum)
+
+			}
 		}
 
 	}
@@ -285,9 +283,26 @@ var getDate=function(dateString){
 }
 
 //Tutorial page
-var tutorialPage = document.getElementById("tutorialPage");
-tutorialPage.show();
+//checks to see if it's the first time for boot before doing anything
+if(window.localStorage.getItem('firstTime')==null || window.localStorage.getItem('firstTime')=='true'){
+	window.localStorage.setItem('firstTime', 'false');
+	var tutorialPage1 = document.getElementById("tutorialPage1");
+	var tutorialPage2 = document.getElementById("tutorialPage2");
+	var tutorialPage3 = document.getElementById("tutorialPage3");
+	tutorialPage1.show();
+}
+
+var nextTutorialPage=function(){
+	tutorialPage1.hide();
+	tutorialPage2.show();
+}
+var nextTutorialPage1=function(){
+	tutorialPage2.hide();
+	tutorialPage3.show();
+}
 
 var closeTutorial=function(){
-	tutorialPage.hide();
+	tutorialPage3.hide();
+
+
 }
