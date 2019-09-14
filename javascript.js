@@ -185,7 +185,63 @@ var submit = function() {
 					targetItemTemp=targetItemTemp.replace(" ","");
 				}
 				var separateWordsNum=(targetItem.length-targetItemTemp.length)+1 //this gives the number of separate words there are
-				console.log(separateWordsNum)
+				targetItemTemp=targetItem;
+				console.log(targetItem);
+				var separateWordsArray=new Array(separateWordsNum);
+				var indexBefore=0;
+				var indexAfter=targetItem.indexOf(" ");
+				for(var i=0;i<separateWordsNum;i++){
+					if(i==separateWordsNum-1){
+						separateWordsArray[i]=targetItem.slice(indexBefore,targetItem.length).trim();
+					}
+					else{
+						separateWordsArray[i]=targetItem.slice(indexBefore,indexAfter).trim();
+						indexBefore= indexAfter;
+						indexAfter=targetItem.indexOf(" ",indexAfter+1);
+					}
+
+
+				}
+
+				var outputSearch="I couldn't find that exact item, but I did find the following that might have help...</br></br>";
+				var outputSearchLength=outputSearch.length;
+
+				for(var i=0;i<separateWordsArray.length;i++){
+					for(var j=0; j<globalItemArray.length;j++){
+						if(globalItemArray[j].includes(separateWordsArray[i])){
+							outputSearch+=globalItemArray[j]+" in "+globalLocationArray[j]+"</br>";
+						}
+					}
+				}
+
+				//this is to make sure that the more lenient test does in fact find something and that if it doesn't then it doesn't show the prompt
+				if(outputSearch.length>outputSearchLength){
+					showToast(outputSearch);
+
+				}
+				else{
+					showToast("Sorry! Nothing found!");
+				}
+
+
+			}
+			else{
+				var outputSearch="I couldn't find that exact item, but I did find the following that might have help...</br></br>";
+				var outputSearchLength=outputSearch.length;
+
+				for(var j=0; j<globalItemArray.length;j++){
+					if(globalItemArray[j].includes(targetItem)){
+						outputSearch+=globalItemArray[j]+" in "+globalLocationArray[j]+"</br>";
+					}
+				}
+				//this is to make sure that the more lenient test does in fact find something and that if it doesn't then it doesn't show the prompt
+				if(outputSearch.length>outputSearchLength){
+					showToast(outputSearch);
+
+				}
+				else{
+					showToast("Sorry! Nothing found!");
+				}
 
 			}
 		}
@@ -269,7 +325,7 @@ function showToast(prompt) {
 	x.innerHTML=prompt;
 	setTimeout(function(){
 		x.innerHTML="Message board! ^_^";
-	},4000)
+	},7000)
 }
 
 var randomInt=function(min,max){
