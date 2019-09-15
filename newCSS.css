@@ -19,7 +19,7 @@
 }
 
 #settingsButton{
-	margin-left: 91vw;
+	margin-left: 88vw;
 	margin-top: 1vh;
 }
 
@@ -64,7 +64,7 @@
 }
 
 #hideAllButton{
-	margin-left: 91vw;
+	margin-left: 88vw;
 	margin-top: 3vh;
 }
 
@@ -80,7 +80,7 @@
 		margin-top: 0;
 	}
 	#hideAllButton{
-		margin-left: 91vw;
+		margin-left: 88vw;
 		margin-top: 0;
 	}
 }
@@ -121,22 +121,56 @@
 	margin-right: auto;
 }
 
-#toast{
+#toastContainer{
 	width: 100vw;
 	position: fixed;
 	background-color: white;
 	color: black;
 	/* padding: 3vw; */
 	bottom: 0;
-	z-index: 99;
+	z-index: 89;
 	/* left:7vw; */
 	/* border-top-left-radius: 15px;
 	border-top-right-radius: 15px; */
-	height: 22vh;
+	height: 21vh;
 	/* -webkit-transform: translateZ(0);
 	transform: translateZ(0); */
 	overflow-y: auto;
 }
+
+#toast{
+	width: 80vw;
+	position: fixed;
+	background-color: #e3e3e3;
+	color: black;
+	/* padding: 3vw; */
+	bottom: 0.5vh;
+	z-index: 89;
+	/* left:7vw; */
+	/* border-top-left-radius: 15px; */
+	/* border-top-right-radius: 15px; */
+	height: 17.8vh;
+	border-radius: 15px;
+	/* -webkit-transform: translateZ(0);
+	transform: translateZ(0); */
+	overflow-y: auto;
+	margin-left: 7.5vw;
+	padding-left: 5vw;
+	padding-top: 1vh;
+}
+
+#bunnyImage{
+	z-index: 101;
+	position:fixed;
+	bottom: 0;
+	margin-left: 75vw;
+	margin-top: 95vh;
+
+}
+
+/* #bunnyImage{
+	z-index: 101;
+} */
 
 #exitRemindersButton{
 	background-color: #95B8E1;
@@ -164,4 +198,35 @@
 	width: 20%;
 	margin-left: 70vw;
 	position:fixed;
+}
+
+#reminderSection{
+	text-align: center;
+}
+
+/* for the tutorial page on the help/settings screen */
+#tutorialSection{
+	margin-left: 5vw;
+	margin-right: 5vw;
+	margin-top: 5vh;
+	font-size: 110%;
+}
+#hopeThisAppHelps{
+	text-align: center;
+	margin-top: 2vh;
+}
+#settingsPageTopHalf{
+	height: 35vh;
+	background-color: #95B8E1;
+	border-bottom-left-radius: 11%;
+	border-bottom-right-radius: 11%;
+	color: white;
+	width:100%;
+	z-index:100;
+}
+
+#settingsTitle{
+	text-align: center;
+	font-size: 120%;
+
 }

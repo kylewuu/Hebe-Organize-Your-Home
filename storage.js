@@ -204,23 +204,23 @@ var getReminders=function(){
 
 		//reminder time setting
 		if((currentDate-dateTemp)==parseInt(window.localStorage.getItem('reminderTime'))){
-			document.getElementById("toast").innerHTML+="</br></br> It's been "+ parseInt(window.localStorage.getItem('reminderTime'))+" months since you've stored: "+globalItemArray[i]
+			document.getElementById("toast").innerHTML+="It's been "+ parseInt(window.localStorage.getItem('reminderTime'))+" months since you've stored: "+globalItemArray[i]+"</br></br>"
 			if(i==globalDateArray.length-1){
-				document.getElementById("toast").innerHTML+="</br><button id='exitRemindersButton' onclick='removeReminders()'>Got it!</button>"
+				document.getElementById("toast").innerHTML+="<button id='exitRemindersButton' onclick='removeReminders()'>Got it!</button>"
 			}
 		}
 		else{
-			document.getElementById("toast").innerHTML="Message board! ^_^";
+			document.getElementById("toast").innerHTML="";
 		}
 
 	}
 	if(globalDateArray.length==0){
-		document.getElementById("toast").innerHTML="Message board! ^_^";
+		document.getElementById("toast").innerHTML="";
 	}
 }
 
 var removeReminders=function(){
-	document.getElementById("toast").innerHTML="Message board! ^_^";
+	document.getElementById("toast").innerHTML="";
 }
 
 openDb(); //opens it so that the page actually loads

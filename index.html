@@ -63,7 +63,14 @@
 
 			</ons-list>
 
-			<div id="toast">Message board! ^_^</div>
+
+
+      <div id="toastContainer">
+
+        <div id="toast"></div>
+      </div>
+      <img id="bunnyImage" src="imgs/awake.png" height="140" width="140">
+
 
     </ons-page>
 
@@ -126,21 +133,27 @@
 
   <template id="about.html">
     <ons-page id="settingsPage">
-      <ons-toolbar>
+      <!-- <ons-toolbar>
         <div class="left">
           <ons-toolbar-button onclick="fn.load('home.html')">
-            <ons-icon icon="md-menu"></ons-icon>
+            <ons-icon icon="arrow"></ons-icon>
           </ons-toolbar-button>
         </div>
         <div class="center">
           Settings/Help
         </div>
-      </ons-toolbar>
+      </ons-toolbar> -->
 
       <!-- Items start -->
-      <ul class="list">
-        <li class="list-item">
-          <div class="list-item__center">
+          <div id="settingsPageTopHalf">
+            <ons-back-button onclick="fn.load('home.html')">RETURN TO MAIN MENU</ons-back-button>
+            <p id="settingsTitle">
+              Settings and Help
+            </p>
+
+          </div>
+
+          <div id="reminderSection">
             <div class="list-item__title">
               Reminder Time
             </div>
@@ -149,17 +162,59 @@
             </div>
             <div id="reminderTimeSubtitle">
             </div>
+            <div><input type="text" id="reminderTimeInput" class="left" class="text-input" placeholder="Enter a new duration in MONTHS" value=""></div>
+            <ons-button id="setReminderButton" onclick="setReminderTime()">Submit</ons-button>
+
           </div>
-        </li>
-        <div><input type="text" id="reminderTimeInput" class="left" class="text-input" placeholder="Enter a new duration in MONTHS" value=""></div>
-        <ons-button id="setReminderButton" onclick="setReminderTime()">Submit</ons-button>
-      </ul>
+
+          <div id="tutorialSection">
+            Type in a phrase into the command line on the home page.
+            </br></br>
+            <b>Examples of how to store stuff are:</b>
+            </br></br>
+            <i>Pencil case</i> <b>on</b> <i> shelf</i>
+            </br>
+            <i>Weedwacker</i> <b>in</b> <i> shed</i>
+            </br>
+            I put my <i>smash controllers</i> <b>in</b> <i> the attic</i>
+            </br></br>
+            <b>Some examples to move stuff from one place to another are:</b>
+            </br></br>
+            <i>Move old laptop case</i> <b>to</b> <i> closet shelf</i>
+            </br>
+            <i>I moved my Purple shampoo</i> <b>under</b> <i> my sink</i>
+            </br></br>
+            <b>You can also find items with these phrases:</b>
+            </br></br>
+            <b>Where is my</b> <i> rubik's cube</i>
+            </br>
+            <b>Where are the</b> <i> extra bars of soap</i>
+            </br>
+            </br>
+            <div id="hopeThisAppHelps">
+              Hope you'll find this app at least somewhat useful!
+            </div>
+            </br></br>
+            <!-- Things to come later:
+            </br>
+            Multilevel storage eg. bookshelf in the bedroom (As of right now you just have to say “Bedroom bookshelf”)
+            </br>
+            Undo button
+            </br>
+            Voice -->
+
+
+          </div>
+
+
+
 
     </ons-page>
   </template>
 </body>
 
-<script src="javascript.js"></script>
+<script src="toast.js"></script>
+<script src="mainJS.js"></script>
 <script src="storage.js"></script>
 
 </html>
