@@ -19,7 +19,11 @@ document.addEventListener('init', function(event){
 //for pressing the enter keys
 window.addEventListener("keypress", keyPress, false);
 function keyPress(key) {
+<<<<<<< HEAD
 	if (key.key == "Enter" && document.getElementById("setReminderButton")==null){
+=======
+	if (key.key == "Enter"){
+>>>>>>> f8d41ab1dcf59eb677d8b7a15b6af471405654a7
 		// document.getElementById("submitButton").click();
 		submit();
 
