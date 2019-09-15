@@ -139,7 +139,7 @@
 }
 
 #toast{
-	width: 80vw;
+	width: 70vw;
 	position: fixed;
 	background-color: #e3e3e3;
 	color: black;
@@ -154,8 +154,9 @@
 	/* -webkit-transform: translateZ(0);
 	transform: translateZ(0); */
 	overflow-y: auto;
-	margin-left: 7.5vw;
+	margin-left: 5vw;
 	padding-left: 5vw;
+	padding-right: 15vw;
 	padding-top: 1vh;
 }
 
@@ -175,8 +176,9 @@
 #exitRemindersButton{
 	background-color: #95B8E1;
 	color: #fff;
-	border-radius: 12px;
+	border-radius: 6px;
 	box-shadow: none;
+	width: 40%;
 }
 
 
@@ -201,11 +203,25 @@
 }
 
 #reminderSection{
-	text-align: center;
+	margin-left: 5vw;
+
+}
+#reminderTimeInput{
+	border-radius: 10px/10px;
+	background-color: #edeff0;
+	width: 60vw;
+	border: none;
+	height: 4vh;
+	padding-left: 1vw;
+	margin-top: 2vh;
+	margin-bottom: 1vh;
+}
+#setReminderButton{
+	background-color: #abb9d4;
 }
 
 #settingsBackButton{
-	color: white;
+	color: black;
 }
 
 /* for the tutorial page on the help/settings screen */
@@ -221,12 +237,16 @@
 }
 #settingsPageTopHalf{
 	height: 35vh;
-	background-color: #95B8E1;
+	background-color: #d1e5f7;
 	border-bottom-left-radius: 11%;
 	border-bottom-right-radius: 11%;
-	color: white;
+	color: #545554;
 	width:100%;
 	z-index:100;
+	position: fixed;
+}
+#settingsPageTopHalfPad{
+	height: 37.5vh;
 }
 
 #settingsTitle{

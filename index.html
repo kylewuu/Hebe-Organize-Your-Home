@@ -69,7 +69,7 @@
 
         <div id="toast"></div>
       </div>
-      <img id="bunnyImage" src="imgs/awake.png" height="140" width="140">
+      <img id="bunnyImage" src="imgs/awake.png" height="80" width="80">
 
 
     </ons-page>
@@ -155,26 +155,30 @@
 
       <!-- Items start -->
           <div id="settingsPageTopHalf">
+
             <ons-back-button onclick="fn.load('home.html')" id="settingsBackButton">RETURN TO MAIN MENU</ons-back-button>
             <p id="settingsTitle">
               Settings and Help
             </p>
+            <div id="reminderSection">
+              <div class="list-item__title">
+                Reminder Time
+              </div>
+              <div class="list-item__subtitle" >
+                Set the length of time an item can sit unused before you're reminded of it.
+              </div>
+              <div id="reminderTimeSubtitle">
+              </div>
+              <div><input type="text" id="reminderTimeInput" class="left" class="text-input" placeholder="Enter a new duration in MONTHS" value=""></div>
+              <ons-button id="setReminderButton" onclick="setReminderTime()">Submit</ons-button>
+
+            </div>
+
+          </div>
+          <div id="settingsPageTopHalfPad">
 
           </div>
 
-          <div id="reminderSection">
-            <div class="list-item__title">
-              Reminder Time
-            </div>
-            <div class="list-item__subtitle" >
-              Set the length of time an item can sit unused before you're reminded of it.
-            </div>
-            <div id="reminderTimeSubtitle">
-            </div>
-            <div><input type="text" id="reminderTimeInput" class="left" class="text-input" placeholder="Enter a new duration in MONTHS" value=""></div>
-            <ons-button id="setReminderButton" onclick="setReminderTime()">Submit</ons-button>
-
-          </div>
 
           <div id="tutorialSection">
             Type in a phrase into the command line on the home page.

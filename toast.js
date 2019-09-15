@@ -10,14 +10,14 @@ function showToast(prompt) {
 	setTimeout(function(){
 		x.innerHTML="";
     //sets the interval for the sleepy bunny
-    bunnySleepArray=['imgs/sleep.png','imgs/sleep1.png','imgs/sleep2.png']
+    bunnySleepArray=['imgs/sleep.png','imgs/sleep1.png','imgs/sleep2.png','imgs/sleep3.png']
     i=0;
     clearInterval(bunnySleepInterval);
     bunnySleepInterval= setInterval(function(){
       if(document.getElementById('bunnyImage')!=null){
         document.getElementById('bunnyImage').src=bunnySleepArray[i];
       }
-      if(i>=2){
+      if(i>=3){
         i=0
       }
       else{
@@ -29,13 +29,13 @@ function showToast(prompt) {
 	},7000)
 }
 
-var bunnySleepArray=['imgs/sleep.png','imgs/sleep1.png','imgs/sleep2.png']
+var bunnySleepArray=['imgs/sleep.png','imgs/sleep1.png','imgs/sleep2.png','imgs/sleep3.png']
 var i=0;
 var bunnySleepInterval= setInterval(function(){
   if(document.getElementById('bunnyImage')!=null){
     document.getElementById('bunnyImage').src=bunnySleepArray[i];
   }
-  if(i>=2){
+  if(i>=3){
     i=0
   }
   else{
