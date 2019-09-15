@@ -204,6 +204,10 @@
 	text-align: center;
 }
 
+#settingsBackButton{
+	color: white;
+}
+
 /* for the tutorial page on the help/settings screen */
 #tutorialSection{
 	margin-left: 5vw;
