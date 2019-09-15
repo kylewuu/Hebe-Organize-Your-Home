@@ -85,6 +85,42 @@
 	}
 }
 
+/* @media only screen and (max-height: 720px) {
+	#settingsTitle{
+		display: none;
+
+	}
+	#settingsPageTopHalf{
+		height: 40vh;
+		background-color: #d1e5f7;
+		border-bottom-left-radius: 11%;
+		border-bottom-right-radius: 11%;
+		color: #545554;
+		width:100%;
+		z-index:100;
+		position: fixed;
+		overflow-y: auto;
+	}
+	#settingsPageTopHalfPad{
+		height: 40vh;
+	}
+	#reminderSection{
+		margin-left: 5vw;
+
+	}
+	#reminderTimeInput{
+		border-radius: 10px/10px;
+		background-color: #edeff0;
+		width: 60vw;
+		border: none;
+		padding-left: 1vw;
+		margin-bottom: 1vh;
+	}
+	#setReminderButton{
+		background-color: #abb9d4;
+	}
+} */
+
 
 #home .page__background{
 	  background-color: white;
@@ -204,6 +240,7 @@
 
 #reminderSection{
 	margin-left: 5vw;
+	/* position:fixed; */
 
 }
 #reminderTimeInput{
@@ -215,6 +252,7 @@
 	padding-left: 1vw;
 	margin-top: 2vh;
 	margin-bottom: 1vh;
+	z-index: 101;
 }
 #setReminderButton{
 	background-color: #abb9d4;
@@ -222,13 +260,14 @@
 
 #settingsBackButton{
 	color: black;
+	height: 1vh;
 }
 
 /* for the tutorial page on the help/settings screen */
 #tutorialSection{
 	margin-left: 5vw;
 	margin-right: 5vw;
-	margin-top: 5vh;
+	margin-top: 37.5vh;
 	font-size: 110%;
 }
 #hopeThisAppHelps{
@@ -244,9 +283,15 @@
 	width:100%;
 	z-index:100;
 	position: fixed;
+	overflow-y: inherit;
+
 }
 #settingsPageTopHalfPad{
 	height: 37.5vh;
+	background-color: white;
+	z-index: 98;
+	position: fixed;
+	width: 100%;
 }
 
 #settingsTitle{
