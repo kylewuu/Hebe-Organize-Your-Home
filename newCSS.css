@@ -1,11 +1,232 @@
-#commandInputDIV{
-	margin-top: 25%;
+#mainPageTopHalf{
+	height: 35vh;
+	background-color: #95B8E1;
+	border-bottom-left-radius: 11%;
+	border-bottom-right-radius: 11%;
+	color: white;
+	position: fixed;
+	width:100%;
+	overflow: inherit;
+	z-index:100;
+}
+#topHalfWhite{
+	height: 38.2vh;
+	background-color: white;
+	z-index: 98;
+	position: fixed;
+	width: 100%;
+
 }
 
-/* #submitButton{
-	background-color: black;
+#settingsButton{
+	margin-left: 88vw;
+	margin-top: 1vh;
+}
+
+#commandInputDIV{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 7.5vh;
+	display:table;
+
+}
+#commandInput{
+	border-radius: 10px/10px;
+	background-color: #edeff0;
+	width: 100%;
+}
+
+#welcomeBack{
+	/* text-align: center; */
+	margin-left: auto;
+	margin-right: auto;
+	display:table;
+	margin-top: 7vh;
+	max-height: inherit;
+	/* padding-top: 15%; */
+	font-size: 20px;
+
+	/* box-sizing: border-box; */
+}
+#welcomeBackName{
+	color: #455961;
+	/* text-align: center; */
+	/* margin: auto; */
+}
+
+#welcomeBackSub{
+	color: #cfe7f7;
+	margin: auto;
+	display:table;
+	/* margin: auto; */
+	font-size: 12px;
+	margin-top: 1vh;
+}
+
+#hideAllButton{
+	margin-left: 88vw;
+	margin-top: 3vh;
+}
+
+/* If the screen is somehow smaller than 650px */
+@media only screen and (max-height: 650px) {
+  #welcomeBackSub{
+		margin-top:0;
+	}
+	#welcomeBack{
+		margin-top:0;
+	}
+	#commandInputDIV{
+		margin-top: 0;
+	}
+	#hideAllButton{
+		margin-left: 88vw;
+		margin-top: 0;
+	}
+}
+
+
+#home .page__background{
+	  background-color: white;
+		color: white;
+}
+
+#listContainer{
+		/* margin-top: 37vh; */
+		border: none;
+}
+
+#itemList{
+	color: white;
+	bottom: 10vh;
+	margin-top: 37vh;
+	margin-bottom: 22vh;
+}
+
+.itemBox{
+	background-color: pink;
+	height: 8%;
+	width: 90%;
+	border-radius: 10px;
+	margin-top: 1.5vh;
+}
+.storageContent{
+	background-color: white;
+	border-radius: 5px;
+}
+.itemBoxRight{
+	margin-left: auto;
+}
+.itemBoxLeft{
+	margin-right: auto;
+}
+
+#toastContainer{
+	width: 100vw;
+	position: fixed;
+	background-color: white;
+	color: black;
+	/* padding: 3vw; */
+	bottom: 0;
+	z-index: 89;
+	/* left:7vw; */
+	/* border-top-left-radius: 15px;
+	border-top-right-radius: 15px; */
+	height: 21vh;
+	/* -webkit-transform: translateZ(0);
+	transform: translateZ(0); */
+	overflow-y: auto;
+}
+
+#toast{
+	width: 80vw;
+	position: fixed;
+	background-color: #e3e3e3;
+	color: black;
+	/* padding: 3vw; */
+	bottom: 0.5vh;
+	z-index: 89;
+	/* left:7vw; */
+	/* border-top-left-radius: 15px; */
+	/* border-top-right-radius: 15px; */
+	height: 17.8vh;
+	border-radius: 15px;
+	/* -webkit-transform: translateZ(0);
+	transform: translateZ(0); */
+	overflow-y: auto;
+	margin-left: 7.5vw;
+	padding-left: 5vw;
+	padding-top: 1vh;
+}
+
+#bunnyImage{
+	z-index: 101;
+	position:fixed;
+	bottom: 0;
+	margin-left: 75vw;
+	margin-top: 95vh;
+
+}
+
+/* #bunnyImage{
+	z-index: 101;
 } */
 
-/* #homeToolBar{
-	background-color: rgba(255, 0, 0, 0.5);;
-} */
+#exitRemindersButton{
+	background-color: #95B8E1;
+	color: #fff;
+	border-radius: 12px;
+	box-shadow: none;
+}
+
+
+/* Tutorial screen */
+.tutorialPages{
+	background-color: rgba(255,255,255,0.8);
+	border-color: pink;
+	overflow-y: auto;
+}
+.tutorialContents{
+	color:black;
+	text-align: left;
+	margin: 3%;
+	overflow-y: auto;
+
+}
+.tutorialPageButtons{
+	bottom: 2vh;
+	width: 20%;
+	margin-left: 70vw;
+	position:fixed;
+}
+
+#reminderSection{
+	text-align: center;
+}
+
+/* for the tutorial page on the help/settings screen */
+#tutorialSection{
+	margin-left: 5vw;
+	margin-right: 5vw;
+	margin-top: 5vh;
+	font-size: 110%;
+}
+#hopeThisAppHelps{
+	text-align: center;
+	margin-top: 2vh;
+}
+#settingsPageTopHalf{
+	height: 35vh;
+	background-color: #95B8E1;
+	border-bottom-left-radius: 11%;
+	border-bottom-right-radius: 11%;
+	color: white;
+	width:100%;
+	z-index:100;
+}
+
+#settingsTitle{
+	text-align: center;
+	font-size: 120%;
+
+}

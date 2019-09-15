@@ -31,88 +31,138 @@
   </ons-splitter>
 
   <template id="home.html">
-    <ons-page id="home">
-      <ons-toolbar id="homeToolBar">
-        <div class="left">
-          <ons-toolbar-button onclick="fn.open()">
-            <ons-icon icon="md-menu"></ons-icon>
-          </ons-toolbar-button>
-        </div>
-        <div class="center">
-          Command Center
-        </div>
-      </ons-toolbar>
-      <!-- actual content starts here -->
-      <div id="commandInputDIV" style="text-align: center; ">
-        <p>
-          <ons-input id="commandInput" modifier="underbar" placeholder="Type a command..." float></ons-input>
-        </p>
-        <p style="margin-top: 30px;">
-          <ons-button id="submitButton" onclick="submit()">Submit</ons-button>
-        </p>
-        <!-- <ons-button id="testButton" onclick="test()">test</ons-button>
-        <div id="test"> -->
+    <ons-page id="home" class="homePage">
+      <div id="mainPageTopHalf">
+          <ons-icon icon="fa-cog" id="settingsButton" onclick="openSettings()" size="140%"></ons-icon>
+          <div id="welcomeBack">WELCOME BACK</div>
+          <div id="welcomeBackSub">
+            what would you like to do today?
+          </div>
 
-        </div>
+          <div id="commandInputDIV" >
+            <input id="commandInput" type="search"  placeholder="Type a command here..." class="search-input" >
+            <!-- <ons-input id="commandInput" modifier="underbar" placeholder="Type a command..." float></ons-input> -->
+          </div>
+
+          <!-- <ons-button id="hideAllButton" onclick="hideAll()"><ons-icon icon="minus" onclick="hideAll()"></ons-icon></ons-button> -->
+
+          <ons-icon icon="minus" id="hideAllButton" onclick="hideAll()" size="140%"></ons-icon>
+
+
+      </div>
+      <div id="topHalfWhite">
+
       </div>
 
-      <div id="resultDiv" class="center">
-        <p id="results" style="text-align: center">
-        </p>
+			<ons-list id="itemList" modifier="noborder">
+				<!-- <ons-list-header>Default</ons-list-header> -->
+				<ons-list-item>Something</ons-list-item>
+				<ons-list-item>went</ons-list-item>
+				<ons-list-item>wrong</ons-list-item>
+
+
+			</ons-list>
+
+
+
+      <div id="toastContainer">
+
+        <div id="toast"></div>
       </div>
-    </ons-page>
-  </template>
+      <img id="bunnyImage" src="imgs/awake.png" height="140" width="140">
 
-  <template id="list.html">
-    <ons-page id="listPage">
-      <ons-toolbar>
-        <div class="left">
-          <ons-toolbar-button onclick="fn.open()">
-            <ons-icon icon="md-menu"></ons-icon>
-          </ons-toolbar-button>
-        </div>
-
-
-
-        <div class="center">
-          List
-        </div>
-
-        <ons-button modifier="quiet" class="right" onclick="hideAll()">hide all</ons-button>
-
-      </ons-toolbar>
-
-      <!-- List starts here -->
-      <ons-list id="itemList">
-        <!-- <ons-list-header>Default</ons-list-header> -->
-        <ons-list-item>Something</ons-list-item>
-        <ons-list-item>went</ons-list-item>
-        <ons-list-item>wrong</ons-list-item>
-
-      </ons-list>
-
-      <!-- List ends here -->
 
     </ons-page>
+
+
   </template>
+
+  <!-- Tutorial screen modal thing ------------------------------------------------->
+  <ons-modal direction="up" id="tutorialPage1" class="tutorialPages">
+    <div id="tutorialContent1" class="tutorialContents">
+      <p>
+        Hey! Welcome to INSERT APP NAME. You store and manage items longterm by telling her in the command line. It’s really that simple. Now I know that you obviously won't use this for little things, but maybe for those things that are worth your time to put it into the app. Things that you use once a year, or once in a while, or just things that you often misplace.
+        </br></br>
+        The app does remind you if you haven’t used an item in over a year (this can be adjusted in the settings), this way, you’ll be able to maybe get rid of some stuff that you don’t actually need but thought you needed.
+
+      </p>
+      <button onclick="nextTutorialPage()" id="nextTutorialPageButton" class="tutorialPageButtons">Next</button>
+    </div>
+  </ons-modal>
+	<ons-modal direction="up" id="tutorialPage2" class="tutorialPages">
+    <div id="tutorialContent2" class="tutorialContents">
+      <p>
+        Type in a phrase into the command line on the home page.
+        </br></br>
+        <b>Examples of how to store stuff are:</b>
+        </br></br>
+        <i>Pencil case</i> <b>on</b> <i> shelf</i>
+        </br>
+        <i>Weedwacker</i> <b>in</b> <i> shed</i>
+        </br>
+        I put my <i>smash controllers</i> <b>in</b> <i> the attic</i>
+        </br></br>
+        <b>Some examples to move stuff from one place to another are:</b>
+        </br></br>
+        <i>Move old laptop case</i> <b>to</b> <i> closet shelf</i>
+        </br>
+        <i>I moved my Purple shampoo</i> <b>under</b> <i> my sink</i>
+        </br></br>
+        <b>You can also find items with these phrases:</b>
+        </br></br>
+        <b>Where is my</b> <i> rubik's cube</i>
+        </br>
+        <b>Where are the</b> <i> extra bars of soap</i>
+        </br>
+      </p>
+      <button onclick="nextTutorialPage1()" id="nextTutorialPageButton1" class="tutorialPageButtons">Next</button>
+    </div>
+  </ons-modal>
+
+	<ons-modal direction="up" id="tutorialPage3" class="tutorialPages">
+    <div id="tutorialContent3" class="tutorialContents">
+      <p>
+        These instructions can be accessed from the "i" button on the top right corner. The command input is also fairly intuitive, meaning there are other ways to access these three commands.
+        </br></br>
+        Hope this app helps!
+        </br></br>
+        Things to come later:
+        </br>
+        Multilevel storage eg. bookshelf in the bedroom (As of right now you just have to say “Bedroom bookshelf”
+        </br>
+        Undo button
+        </br>
+        Voice
+
+      </p>
+
+      <button onclick="closeTutorial()" id="closeTutorialButton">Got it!</button>
+    </div>
+  </ons-modal>
 
   <template id="about.html">
     <ons-page id="settingsPage">
-      <ons-toolbar>
+      <!-- <ons-toolbar>
         <div class="left">
-          <ons-toolbar-button onclick="fn.open()">
-            <ons-icon icon="md-menu"></ons-icon>
+          <ons-toolbar-button onclick="fn.load('home.html')">
+            <ons-icon icon="arrow"></ons-icon>
           </ons-toolbar-button>
         </div>
         <div class="center">
           Settings/Help
         </div>
-      </ons-toolbar>
+      </ons-toolbar> -->
 
       <!-- Items start -->
-      <ul class="list">
-        <li class="list-item">
-          <div class="list-item__center">
+          <div id="settingsPageTopHalf">
+            <ons-back-button onclick="fn.load('home.html')">RETURN TO MAIN MENU</ons-back-button>
+            <p id="settingsTitle">
+              Settings and Help
+            </p>
+
+          </div>
+
+          <div id="reminderSection">
             <div class="list-item__title">
               Reminder Time
             </div>
@@ -121,17 +171,59 @@
             </div>
             <div id="reminderTimeSubtitle">
             </div>
+            <div><input type="text" id="reminderTimeInput" class="left" class="text-input" placeholder="Enter a new duration in MONTHS" value=""></div>
+            <ons-button id="setReminderButton" onclick="setReminderTime()">Submit</ons-button>
+
           </div>
-        </li>
-        <div><input type="text" id="reminderTimeInput" class="left" class="text-input" placeholder="Enter a new duration in MONTHS" value=""></div>
-        <ons-button id="setReminderButton" onclick="setReminderTime()">Submit</ons-button>
-      </ul>
+
+          <div id="tutorialSection">
+            Type in a phrase into the command line on the home page.
+            </br></br>
+            <b>Examples of how to store stuff are:</b>
+            </br></br>
+            <i>Pencil case</i> <b>on</b> <i> shelf</i>
+            </br>
+            <i>Weedwacker</i> <b>in</b> <i> shed</i>
+            </br>
+            I put my <i>smash controllers</i> <b>in</b> <i> the attic</i>
+            </br></br>
+            <b>Some examples to move stuff from one place to another are:</b>
+            </br></br>
+            <i>Move old laptop case</i> <b>to</b> <i> closet shelf</i>
+            </br>
+            <i>I moved my Purple shampoo</i> <b>under</b> <i> my sink</i>
+            </br></br>
+            <b>You can also find items with these phrases:</b>
+            </br></br>
+            <b>Where is my</b> <i> rubik's cube</i>
+            </br>
+            <b>Where are the</b> <i> extra bars of soap</i>
+            </br>
+            </br>
+            <div id="hopeThisAppHelps">
+              Hope you'll find this app at least somewhat useful!
+            </div>
+            </br></br>
+            <!-- Things to come later:
+            </br>
+            Multilevel storage eg. bookshelf in the bedroom (As of right now you just have to say “Bedroom bookshelf”)
+            </br>
+            Undo button
+            </br>
+            Voice -->
+
+
+          </div>
+
+
+
 
     </ons-page>
   </template>
 </body>
 
-<script src="javascript.js"></script>
+<script src="toast.js"></script>
+<script src="mainJS.js"></script>
 <script src="storage.js"></script>
 
 </html>
