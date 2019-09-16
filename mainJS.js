@@ -318,7 +318,6 @@ var setReminderTimeSubtitle=function(){
 }
 
 
-
 var randomInt=function(min,max){
 	min=parseInt(min);
 	max=parseInt(max);
