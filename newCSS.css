@@ -1,5 +1,5 @@
 #mainPageTopHalf{
-	height: 35vh;
+	height: 31vh;
 	background-color: #95B8E1;
 	border-bottom-left-radius: 11%;
 	border-bottom-right-radius: 11%;
@@ -10,7 +10,7 @@
 	z-index:100;
 }
 #topHalfWhite{
-	height: 38.2vh;
+	height: 33.2vh;
 	background-color: white;
 	z-index: 98;
 	position: fixed;
@@ -26,7 +26,7 @@
 #commandInputDIV{
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 7.5vh;
+	margin-top: 4.5vh;
 	display:table;
 
 }
@@ -37,21 +37,16 @@
 }
 
 #welcomeBack{
-	/* text-align: center; */
 	margin-left: auto;
 	margin-right: auto;
 	display:table;
 	margin-top: 7vh;
 	max-height: inherit;
-	/* padding-top: 15%; */
 	font-size: 20px;
-
-	/* box-sizing: border-box; */
 }
+
 #welcomeBackName{
 	color: #455961;
-	/* text-align: center; */
-	/* margin: auto; */
 }
 
 #welcomeBackSub{
@@ -65,7 +60,7 @@
 
 #hideAllButton{
 	margin-left: 88vw;
-	margin-top: 3vh;
+	margin-top: 2vh;
 }
 
 /* If the screen is somehow smaller than 650px */
@@ -85,43 +80,6 @@
 	}
 }
 
-/* @media only screen and (max-height: 720px) {
-	#settingsTitle{
-		display: none;
-
-	}
-	#settingsPageTopHalf{
-		height: 40vh;
-		background-color: #d1e5f7;
-		border-bottom-left-radius: 11%;
-		border-bottom-right-radius: 11%;
-		color: #545554;
-		width:100%;
-		z-index:100;
-		position: fixed;
-		overflow-y: auto;
-	}
-	#settingsPageTopHalfPad{
-		height: 40vh;
-	}
-	#reminderSection{
-		margin-left: 5vw;
-
-	}
-	#reminderTimeInput{
-		border-radius: 10px/10px;
-		background-color: #edeff0;
-		width: 60vw;
-		border: none;
-		padding-left: 1vw;
-		margin-bottom: 1vh;
-	}
-	#setReminderButton{
-		background-color: #abb9d4;
-	}
-} */
-
-
 #home .page__background{
 	  background-color: white;
 		color: white;
@@ -135,7 +93,7 @@
 #itemList{
 	color: white;
 	bottom: 10vh;
-	margin-top: 37vh;
+	margin-top: 32vh;
 	margin-bottom: 22vh;
 }
 
@@ -162,15 +120,9 @@
 	position: fixed;
 	background-color: white;
 	color: black;
-	/* padding: 3vw; */
 	bottom: 0;
 	z-index: 89;
-	/* left:7vw; */
-	/* border-top-left-radius: 15px;
-	border-top-right-radius: 15px; */
-	height: 21vh;
-	/* -webkit-transform: translateZ(0);
-	transform: translateZ(0); */
+	height: 20vh;
 	overflow-y: auto;
 }
 
@@ -179,16 +131,10 @@
 	position: fixed;
 	background-color: #e3e3e3;
 	color: black;
-	/* padding: 3vw; */
 	bottom: 0.5vh;
 	z-index: 89;
-	/* left:7vw; */
-	/* border-top-left-radius: 15px; */
-	/* border-top-right-radius: 15px; */
-	height: 17.8vh;
+	height: 16.8vh;
 	border-radius: 15px;
-	/* -webkit-transform: translateZ(0);
-	transform: translateZ(0); */
 	overflow-y: auto;
 	margin-left: 5vw;
 	padding-left: 5vw;
@@ -204,10 +150,6 @@
 	margin-top: 95vh;
 
 }
-
-/* #bunnyImage{
-	z-index: 101;
-} */
 
 #exitRemindersButton{
 	background-color: #95B8E1;
@@ -236,12 +178,19 @@
 	width: 20%;
 	margin-left: 70vw;
 	position:fixed;
+	background-color: white;
+	border-radius: 3px;
+	border-color: black;
+}
+
+#closeTutorialButton{
+	background-color: white;
+	border-radius: 3px;
+	border-color: black;
 }
 
 #reminderSection{
 	margin-left: 5vw;
-	/* position:fixed; */
-
 }
 #reminderTimeInput{
 	border-radius: 10px/10px;

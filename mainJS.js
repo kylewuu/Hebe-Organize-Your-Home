@@ -333,6 +333,7 @@ var getDate=function(dateString){
 //forces it to be the first time
 // window.localStorage.setItem('firstTime','true');
 //checks to see if it's the first time for boot before doing anything
+window.localStorage.setItem('firstTime','true');
 if(window.localStorage.getItem('firstTime')==null || window.localStorage.getItem('firstTime')=='true'){
 	window.localStorage.setItem('firstTime', 'false');
 	var tutorialPage1 = document.getElementById("tutorialPage1");
