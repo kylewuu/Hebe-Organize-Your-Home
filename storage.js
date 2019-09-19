@@ -32,8 +32,6 @@ function keyPress(key) {
 
 }
 
-
-
 var db=null;
 var openedID="";
 var groupIDArray=[];
@@ -161,8 +159,6 @@ var renderItems= function(tx, rs){
 		getReminders();
 		bootUpFlag=true;
 	}
-
-
 }
 
 var storeItem=function(value){
@@ -184,9 +180,13 @@ var deleteItem= function(id){
 	openedID=idListTempArray.indexOf(id.toString());
 	openedID=groupIDArray[openedID];
 
+	//shows what was deleted
+	showToast(globalItemArray[openedID]+" was deleted from "+globalLocationArray[openedID]);
+
 	db.transaction(function(tx){
 		tx.executeSql("DELETE FROM items WHERE ID=?", [id], onSuccess, onError);
 	})
+
 
 }
 

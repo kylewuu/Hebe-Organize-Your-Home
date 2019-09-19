@@ -189,6 +189,12 @@
 	border-color: black;
 }
 
+/* Settings page */
+#settingsPage .page__background{
+	  background-color: white;
+		color: white;
+}
+
 #reminderSection{
 	margin-left: 5vw;
 }
@@ -218,13 +224,14 @@
 	margin-right: 5vw;
 	margin-top: 37.5vh;
 	font-size: 110%;
+	background-color: white;
 }
 #hopeThisAppHelps{
 	text-align: center;
 	margin-top: 2vh;
 }
 #settingsPageTopHalf{
-	height: 35vh;
+	height: 37vh;
 	background-color: #d1e5f7;
 	border-bottom-left-radius: 11%;
 	border-bottom-right-radius: 11%;

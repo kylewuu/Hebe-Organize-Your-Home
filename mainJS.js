@@ -4,11 +4,12 @@ var months=["Jan", "Feb", "Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov",
 
 
 // local storage initializations
-
+//reminder date initialization
 if(window.localStorage.getItem('reminderTime')==null){
 	window.localStorage.setItem('reminderTime', '12');
 }
 
+//submit function
 var submit = function() {
   var command = document.getElementById('commandInput').value;
 	command= command.toLowerCase();
@@ -28,6 +29,7 @@ var submit = function() {
 
 	var keywordMove
 
+	//keywords
 	var junkWordsFiltering=['i put my ', 'i put ','put my ','put ', 'store my ','i stored my ','store ','add ','insert my ','insert ','place my ','place '];
 	var keywordsStore= [' in ', ' into ',' to ', ' on ', ' beside ', ' with ', ' around ', ' on top ', ' in my ', ' on my ', ' beside my ', ' to my ',' with my ', ' around my ', ' on top my ', ' in the ', ' to the ',' on the ', ' beside the ', ' with the ', ' around the ', ' on top the ']//keywords that the comand looks for to store
 	var keywordsFind=['where ','where is ', 'where is my ','where are ','where are my ','where are the '];
@@ -102,7 +104,6 @@ var submit = function() {
 	}
 
 	//storing only--------------
-	//testing to see if the command contains those keywords
 	if(moveCommandSuccess==false){
 		for(var i=0;i<keywordsStore.length;i++){
 			keywordStoreTemp=keywordsStore[i];
@@ -252,11 +253,15 @@ var submit = function() {
 		// toolBarBlink("rgba(255, 0, 0");
 
 		showToast("Error! You have not entered a correct command. Please try again or visit the 'help' page to find a quick tutorial on how to use our very intuitive app");
-		if(command=="fuck you"){ //incase anyone says anything bad to my command center >:(
+		if(command=="this is stupid" || command=="i don't like this" || command=="i dont like this"){ //incase anyone says anything bad to my command center >:(
 			showToast("Hey be nice");
 		}
 		if(command=="i love ashley"){
 			showToast("I do too");
+			document.getElementById("commandInput").value="";
+		}
+		if(command=="show me credits"){
+			showToast("Special thanks to my boys Willy and Matty helping me choose the app name");
 			document.getElementById("commandInput").value="";
 		}
 	}
@@ -269,18 +274,18 @@ var displayResult=function(result,targetItem){
 	return resultSentencePart1BankArray[Math.floor(Math.random()*(resultSentencePart1BankArray.length))]+targetItem+resultSentencePart2BankArray[Math.floor(Math.random()*(resultSentencePart2BankArray.length))]+result+" on "+months[dateString.slice(dateString.indexOf("::")+2,dateString.indexOf(":::"))]+" "+dateString.slice(dateString.indexOf(":::")+3,dateString.length)+", "+dateString.slice(0,dateString.indexOf("::"));
 }
 
-//side menu
+//opening pages
 window.fn = {};
-window.fn.open = function() {
-  var menu = document.getElementById('menu');
-  menu.open();
-};
-
+// window.fn.open = function() {
+//   var menu = document.getElementById('menu');
+//   menu.open();
+// };
+//
 window.fn.load = function(page) {
   var content = document.getElementById('content');
-  var menu = document.getElementById('menu');
+  // var menu = document.getElementById('menu');
   content.load(page)
-    .then(menu.close.bind(menu));
+    // .then(menu.close.bind(menu));
 };
 
 //hide all button
@@ -332,7 +337,7 @@ var getDate=function(dateString){
 //forces it to be the first time
 // window.localStorage.setItem('firstTime','true');
 //checks to see if it's the first time for boot before doing anything
-window.localStorage.setItem('firstTime','true');
+// window.localStorage.setItem('firstTime','true'); //this is to force it to be the first time for testing
 if(window.localStorage.getItem('firstTime')==null || window.localStorage.getItem('firstTime')=='true'){
 	window.localStorage.setItem('firstTime', 'false');
 	var tutorialPage1 = document.getElementById("tutorialPage1");

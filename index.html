@@ -12,21 +12,7 @@
 <body>
 
   <ons-splitter>
-    <ons-splitter-side id="menu" side="left" width="220px" collapse swipeable>
-      <ons-page>
-        <ons-list>
-          <ons-list-item onclick="fn.load('home.html')" tappable>
-            Home
-          </ons-list-item>
-          <ons-list-item onclick="fn.load('list.html')" tappable>
-            Storage
-          </ons-list-item>
-          <ons-list-item onclick="fn.load('about.html')" tappable>
-            Settings and Help
-          </ons-list-item>
-        </ons-list>
-      </ons-page>
-    </ons-splitter-side>
+
     <ons-splitter-content id="content" page="home.html"></ons-splitter-content>
   </ons-splitter>
 
@@ -38,43 +24,25 @@
           <div id="welcomeBackSub">
             what would you like to do today?
           </div>
-
           <div id="commandInputDIV" >
             <input id="commandInput" type="search"  placeholder="Type a command here..." class="search-input" >
-            <!-- <ons-input id="commandInput" modifier="underbar" placeholder="Type a command..." float></ons-input> -->
           </div>
-
-          <!-- <ons-button id="hideAllButton" onclick="hideAll()"><ons-icon icon="minus" onclick="hideAll()"></ons-icon></ons-button> -->
-
           <ons-icon icon="minus" id="hideAllButton" onclick="hideAll()" size="140%"></ons-icon>
-
-
       </div>
-      <div id="topHalfWhite">
-
-      </div>
+      <div id="topHalfWhite"></div>
 
 			<ons-list id="itemList" modifier="noborder">
-				<!-- <ons-list-header>Default</ons-list-header> -->
 				<ons-list-item>Something</ons-list-item>
 				<ons-list-item>went</ons-list-item>
 				<ons-list-item>wrong</ons-list-item>
-
-
 			</ons-list>
 
-
-
       <div id="toastContainer">
-
         <div id="toast"></div>
       </div>
+
       <img id="bunnyImage" src="imgs/awake.png" height="80" width="80">
-
-
     </ons-page>
-
-
   </template>
 
   <!-- Tutorial screen modal thing ------------------------------------------------->
@@ -144,18 +112,6 @@
 
   <template id="about.html">
     <ons-page id="settingsPage">
-      <!-- <ons-toolbar>
-        <div class="left">
-          <ons-toolbar-button onclick="fn.load('home.html')">
-            <ons-icon icon="arrow"></ons-icon>
-          </ons-toolbar-button>
-        </div>
-        <div class="center">
-          Settings/Help
-        </div>
-      </ons-toolbar> -->
-
-      <!-- Items start -->
           <div id="settingsPageTopHalf">
 
             <ons-back-button onclick="fn.load('home.html')" id="settingsBackButton">RETURN TO MAIN MENU</ons-back-button>
