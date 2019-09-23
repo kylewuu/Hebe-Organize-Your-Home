@@ -349,8 +349,10 @@ if(window.localStorage.getItem('firstTime')==null || window.localStorage.getItem
 var nextTutorialPage=function(){
 	tutorialPage1.hide();
 	tutorialPage2.show();
+	tutorialPage3.hide();
 }
 var nextTutorialPage1=function(){
+	tutorialPage1.hide();
 	tutorialPage2.hide();
 	tutorialPage3.show();
 }
