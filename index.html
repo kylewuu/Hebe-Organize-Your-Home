@@ -32,9 +32,9 @@
       <div id="topHalfWhite"></div>
 
 			<ons-list id="itemList" modifier="noborder">
-				<ons-list-item>Something</ons-list-item>
+				<!-- <ons-list-item>Something</ons-list-item>
 				<ons-list-item>went</ons-list-item>
-				<ons-list-item>wrong</ons-list-item>
+				<ons-list-item>wrong</ons-list-item> -->
 			</ons-list>
 
       <div id="toastContainer">
@@ -83,6 +83,7 @@
         <b>Where are the</b> <i> extra bars of soap</i>
         </br>
       </p>
+      <button onclick="tutorialPage1.show();tutorialPage2.hide();tutorialPage3.hide()" class="tutorialPageButtons" id="tutorialBackButton">Back</button>
       <button onclick="nextTutorialPage1()" id="nextTutorialPageButton1" class="tutorialPageButtons">Next</button>
     </div>
   </ons-modal>
@@ -106,12 +107,13 @@
 
       </p>
 
+      <button onclick="nextTutorialPage()" id="closeTutorialButton">Back</button>
       <button onclick="closeTutorial()" id="closeTutorialButton">Got it!</button>
     </div>
   </ons-modal>
 
   <template id="about.html">
-    <ons-page id="settingsPage">
+    <ons-page id="settingsPage"  on-device-backbutton="fn.load('home.html')">
           <div id="settingsPageTopHalf">
 
             <ons-back-button onclick="fn.load('home.html')" id="settingsBackButton">RETURN TO MAIN MENU</ons-back-button>
